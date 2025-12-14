@@ -53,8 +53,8 @@ We encourage contributions from TUOLAT students, faculty, alumni, and legal tech
 | Project | Description | Tech Stack | Status | Contributors |
 |---------|-------------|------------|--------|--------------|
 | **LegalAI Assistant** | AI-powered legal research assistant for case law analysis and precedent matching | Python, Hugging Face Transformers, FastAPI | 🟢 Active | 3 students, 1 faculty |
-| **Digital Courtroom Prototype** | Web-based simulation for virtual court proceedings and evidence presentation | React, Node.js, WebRTC | 🟡 Active | 1 faculty |
-| **ContractGen** | Automated contract generation and clause recommendation system | Python, GPT-4 API, Streamlit | 🟡 Prototype | 1 faculty |
+| **Digital Courtroom Prototype** | Web-based simulation for virtual court proceedings and evidence presentation | React, Node.js, WebRTC | 🟡 Prototype Active | 1 faculty |
+| **ContractGen** | Automated contract generation and clause recommendation system | Python, GPT-4 API, Streamlit | 🟡 Prototype Active | 1 faculty |
 | **CaseLaw Summarizer** | NLP tool to generate executive summaries of legal opinions | spaCy, Sentence Transformers | 🟡 Prototype Active | 1 faculty |
 
 ### Featured Project: LegalAI Assistant
