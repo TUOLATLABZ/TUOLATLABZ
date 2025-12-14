@@ -73,7 +73,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 Contact the Innovation Lab: [innovation@tuolatjuris.org](mailto:innovation@tuolatjuris.org)
 
 **Quick Start**:
-```bash
-cd TUOLAT-LABZ/projects/legalai
-pip install -r requirements.txt
-python app.py
+Coming Soon!
