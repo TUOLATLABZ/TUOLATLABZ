@@ -62,12 +62,6 @@ We encourage contributions from TUOLAT students, faculty, alumni, and legal tech
 
 **Demo**: [Try the beta](https://legalai.tuolatjuris.org) (coming soon 2026)
 
-**Quick Start**:
-```bash
-cd TUOLAT-LABZ/projects/legalai
-pip install -r requirements.txt
-python app.py
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details (add one if not present).
@@ -77,3 +71,9 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 **Let's innovate the future of law together!** 🚀
 
 Contact the Innovation Lab: [innovation@tuolatjuris.org](mailto:innovation@tuolatjuris.org)
+
+**Quick Start**:
+```bash
+cd TUOLAT-LABZ/projects/legalai
+pip install -r requirements.txt
+python app.py
