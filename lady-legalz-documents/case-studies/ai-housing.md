@@ -15,6 +15,7 @@ Stanford's Legal Design Lab developed a prototype AI Intake Agent (2024-2025) fo
 
 ## Lessons for Legal Tech
 - Hybrid AI (rules + LLMs) for reliability.
+- Judicial Process
 - Relevance to TUOLAT LABZ: Prototype similar tools for digital judicial access.
 
 ## Sources
