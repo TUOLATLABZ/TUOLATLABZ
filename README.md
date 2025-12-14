@@ -48,6 +48,26 @@ We encourage contributions from TUOLAT students, faculty, alumni, and legal tech
 - Support: [support@tuolatjuris.org](mailto:support@tuolatjuris.org)
 - Blog & Store: [TUOLAT Scoop](https://www.thefutureparalegalsofamerica.org/tuolat)
 
+## 🚀 Current Projects
+
+| Project | Description | Tech Stack | Status | Contributors |
+|---------|-------------|------------|--------|--------------|
+| **LegalAI Assistant** | AI-powered legal research assistant for case law analysis and precedent matching | Python, Hugging Face Transformers, FastAPI | 🟡 In Development | 3 students, 1 faculty |
+| **Digital Courtroom Prototype** | Web-based simulation for virtual court proceedings and evidence presentation | React, Node.js, WebRTC | 🟢 Active | 5 students |
+| **ContractGen** | Automated contract generation and clause recommendation system | Python, GPT-4 API, Streamlit | 🟡 Prototype | 2 students |
+| **CaseLaw Summarizer** | NLP tool to generate executive summaries of legal opinions | spaCy, Sentence Transformers | 🔴 Planning | 1 student |
+
+### Featured Project: LegalAI Assistant
+**What it does**: Analyzes legal queries and returns relevant case law with confidence scores and citation formatting.
+
+**Demo**: [Try the beta](https://legalai.tuolatjuris.org) (coming soon 2026)
+
+**Quick Start**:
+```bash
+cd TUOLAT-LABZ/projects/legalai
+pip install -r requirements.txt
+python app.py
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details (add one if not present).
