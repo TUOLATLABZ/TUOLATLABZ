@@ -1,4 +1,4 @@
-# Resources
+# TUOLAT LABZ: Resources
 
 This folder contains curated resources for **TUOLAT LABZ** – supporting research, development, and learning in legal technology, AI in law, digital judicial systems, and legal digital forensics.
 
