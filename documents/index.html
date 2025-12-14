@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUOLAT LABZ - University of Law and Technology Innovation Lab</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #0059b3;
+            --accent: #00aaff;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+            color: var(--dark);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            opacity: 0.95;
+        }
+        nav {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0.5rem 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            background: white;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-10px);
+        }
+        h2 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        h3 {
+            color: var(--secondary);
+            margin-top: 2rem;
+        }
+        .demo-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background: var(--light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        iframe {
+            width: 100%;
+            height: 520px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .demo-buttons button {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .demo-buttons button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        .icon {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        .github-link {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        #summaryResult {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: #e3f2fd;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent);
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            iframe { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TUOLAT LABZ</h1>
+        <p>Innovation Lab for The University of Law and Technology</p>
+        <p>Welcome to TUOLAT LABZ 2026! Pioneering the frontier of Legal Innovation through AI and Technology</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home icon"></i>Home</a></li>
+            <li><a href="#judicial"><i class="fas fa-gavel icon"></i>Digital Judicial</a></li>
+            <li><a href="#forensics"><i class="fas fa-search icon"></i>AI Forensics</a></li>
+            <li><a href="#projects"><i class="fas fa-code icon"></i>Projects & Demos</a></li>
+            <li><a href="#github"><i class="fab fa-github icon"></i>GitHub</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="home">
+            <h2>Welcome to TUOLAT LABZ</h2>
+            <p>The official open-source Innovation Lab for The University of Law and Technology (TUOLAT). We are building the future of justice with collaborative projects at the intersection of legal technology, artificial intelligence, and digital judicial systems.</p>
+            <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ" target="_blank" class="github-link">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
+        </section>
+        
+        <section id="judicial">
+            <h2>Digital Judicial System & Process Innovation</h2>
+            <p>Reimagining justice delivery through modern technology: virtual courtrooms, automated workflows, and AI-enhanced decision support for faster, fairer outcomes.</p>
+            <ul>
+                <li><i class="fas fa-video icon"></i> Real-time virtual hearings with WebRTC</li>
+                <li><i class="fas fa-shield-alt icon"></i> Blockchain-secured legal records</li>
+                <li><i class="fas fa-brain icon"></i> Predictive analytics for case outcomes</li>
+            </ul>
+        </section>
+        
+        <section id="forensics">
+            <h2>AI Digital Legal Forensics</h2>
+            <p>Harnessing artificial intelligence to revolutionize evidence analysis, preservation, and presentation in the digital age.</p>
+            <ul>
+                <li><i class="fas fa-fingerprint icon"></i> AI-powered digital evidence authentication</li>
+                <li><i class="fas fa-file-alt icon"></i> Advanced NLP for forensic document review</li>
+                <li><i class="fas fa-lock icon"></i> Compliance with global legal standards</li>
+            </ul>
+        </section>
+        
+        <section id="projects">
+            <h2>Featured Projects & Interactive Demos</h2>
+            <p>Experience our cutting-edge legal tech tools live. Interact with prototypes built by our community of innovators.</p>
+            
+            <h3><i class="fas fa-robot icon"></i> 1. LegalAI Assistant</h3>
+            <p>AI-powered legal research assistant – ask questions about statutes, cases, or concepts.</p>
+            <div class="demo-container">
+                <iframe src="https://huggingface.co/spaces/legal-ai-demo/chat" title="LegalAI Assistant Demo"></iframe>
+                <p><em>Replace with your deployed Hugging Face Space, Gradio, or Streamlit link.</em></p>
+            </div>
+            
+            <h3><i class="fas fa-building icon"></i> 2. Digital Courtroom Prototype</h3>
+            <p>Join a fully interactive virtual courtroom with video, chat, and document sharing.</p>
+            <div class="demo-container">
+                <div class="demo-buttons">
+                    <button onclick="window.open('https://whereby.com/tuolat-courtroom', '_blank')"><i class="fas fa-video"></i> Enter Mock Courtroom</button>
+                    <button onclick="alert('Features: Real-time video, screen sharing, encrypted chat, and evidence presentation.')"><i class="fas fa-info-circle"></i> View Features</button>
+                </div>
+                <p><em>Powered by WebRTC. Deploy your own room or use services like Whereby/Jitsi.</em></p>
+            </div>
+            
+            <h3><i class="fas fa-file-contract icon"></i> 3. ContractGen</h3>
+            <p>Generate professional legal contracts instantly from natural language descriptions.</p>
+            <div class="demo-container">
+                <iframe src="https://contractgen-tuolat.streamlit.app" title="ContractGen Demo"></iframe>
+                <p><em>Deploy on Streamlit, Vercel, or similar and update the URL.</em></p>
+            </div>
+            
+            <h3><i class="fas fa-gavel icon"></i> 4. CaseLaw Summarizer</h3>
+            <p>Paste any court opinion and receive an instant AI-generated summary with key holdings.</p>
+            <div class="demo-container">
+                <textarea id="caseText" rows="6" placeholder="Paste full case law text here for instant summarization..."></textarea>
+                <button onclick="summarizeCase()"><i class="fas fa-magic"></i> Generate AI Summary</button>
+                <div id="summaryResult"></div>
+                <script>
+                    function summarizeCase() {
+                        const input = document.getElementById('caseText').value.trim();
+                        if (!input) {
+                            document.getElementById('summaryResult').innerHTML = '<strong style="color:red;">Please paste case text first.</strong>';
+                            return;
+                        }
+                        // Simulated AI response (replace with real API in production)
+                        const summary = `🔹 <strong>Key Holdings</strong>\n• Plaintiff prevailed on breach of contract claim\n• Digital signatures validated under E-SIGN Act\n• Damages awarded: $150,000 plus interest\n\n🔹 <strong>Ratio Decidendi</strong>\nThe court found clear intent from electronic communications and upheld enforceability of online agreements.\n\n🔹 <strong>Precedent Impact</strong>\nStrengthens legal standing of electronic contracts in commercial litigation.`;
+                        document.getElementById('summaryResult').innerHTML = '<strong>AI-Generated Summary:</strong><br><pre style="background:none;border:none;padding:0;">' + summary + '</pre>';
+                    }
+                </script>
+                <p><em>Client-side demo. Connect to Hugging Face, OpenAI, or local LLM for real AI summarization.</em></p>
+            </div>
+        </section>
+        
+        <section id="github">
+            <h2>GitHub Organization & Join Us</h2>
+            <p>Explore and contribute to our open-source ecosystem:</p>
+            <p><a href="https://github.com/TUOLATLABZ" target="_blank" class="github-link"><i class="fab fa-github icon"></i> github.com/TUOLATLABZ</a></p>
+            <p>All projects are MIT licensed. Students, researchers, developers, and legal professionals welcome!</p>
+            <p><strong>Contact:</strong> innovation@tuolatjuris.org</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 TUOLAT LABZ - The University of Law and Technology. Pioneering Legal Innovation.</p>
+    </footer>
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
