@@ -3,39 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUOLAT LABZ - Lady Legalz Beta 4</title>
-    <!-- Google Fonts for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>TUOLAT LABZ - Lady Legalz Innovation Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
+        /* --- CSS Variables and Global Reset (Faster/Smarter) --- */
         :root {
-            --primary: #003366;
-            --secondary: #0059b3;
-            --accent: #00aaff;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #28a745;
+            /* Colors */
+            --color-primary: #003366; /* Deep Blue */
+            --color-secondary: #0059b3; /* Medium Blue */
+            --color-accent: #00aaff; /* Bright Sky Blue */
+            --color-light: #f0f4f8; /* Light Background */
+            --color-white: #ffffff;
+            --color-dark: #212529; /* Near Black */
+            --color-success: #28a745;
+            --color-info: #e3f2fd;
+            
+            /* Fonts */
+            --font-body: 'Roboto', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+
+            /* Spacing */
+            --space-md: 1.5rem;
+            --space-lg: 3rem;
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
         }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.7;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
-            color: var(--dark);
+            background: linear-gradient(to bottom, var(--color-light), #d9e2ec);
+            color: var(--color-dark);
+            min-height: 100vh; /* Ensure full page coverage */
         }
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+        }
+        h1 { font-size: 3rem; margin: 0; }
+        h2 { 
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        h3 { color: var(--color-secondary); margin-top: 2rem; }
+
+        /* --- Header --- */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
             padding: 4rem 1rem;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin: 0;
         }
         header p {
             font-size: 1.3rem;
@@ -43,9 +75,11 @@
             margin: 1rem auto;
             opacity: 0.95;
         }
-        nav {
-            background: var(--primary);
-            padding: 1rem;
+
+        /* --- Navigation (Sticky for stability) --- */
+        nav[role="navigation"] {
+            background: var(--color-primary);
+            padding: 0.5rem 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -60,54 +94,58 @@
             flex-wrap: wrap;
         }
         nav li {
-            margin: 0.5rem 1rem;
+            margin: 0.5rem 0.5rem;
         }
         nav a {
-            color: white;
+            color: var(--color-white);
             text-decoration: none;
             font-weight: 600;
             padding: 0.5rem 1rem;
             border-radius: 30px;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
         }
-        nav a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+        nav a:hover, nav a:focus {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            outline: none; /* Remove default focus outline */
         }
+        .icon {
+            color: var(--color-accent);
+            margin-right: 0.5rem;
+            transition: color 0.3s;
+        }
+        nav a:hover .icon, nav a:focus .icon {
+            color: var(--color-primary); /* Invert color on hover for visual pop */
+        }
+        
+        /* --- Main Content Layout --- */
         main {
             max-width: 1200px;
-            margin: 3rem auto;
+            margin: var(--space-lg) auto;
             padding: 0 1rem;
         }
         section {
-            background: white;
-            margin-bottom: 3rem;
+            background: var(--color-white);
+            margin-bottom: var(--space-lg);
             padding: 2.5rem;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         section:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
-        h2 {
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        h3 {
-            color: var(--secondary);
-            margin-top: 2rem;
-        }
+
+        /* --- Demo Components --- */
         .demo-container {
             margin-top: 2rem;
             padding: 2rem;
             border: 1px solid #e0e0e0;
             border-radius: 12px;
-            background: var(--light);
+            background: var(--color-light);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         iframe {
@@ -116,66 +154,93 @@
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            min-height: 400px; /* Stable minimum height */
         }
-        .demo-buttons button {
+        
+        /* --- Buttons (Smarter) --- */
+        .demo-buttons button, .action-button {
             padding: 0.8rem 1.5rem;
-            margin: 0.5rem;
-            background: var(--secondary);
-            color: white;
+            margin: 0.5rem 0; /* Adjusted margin for better mobile layout */
+            background: var(--color-secondary);
+            color: var(--color-white);
             border: none;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: inline-flex; /* Use flex for button content */
+            align-items: center;
+            gap: 0.5rem;
         }
-        .demo-buttons button:hover {
-            background: var(--accent);
+        .demo-buttons button:hover, .action-button:hover {
+            background: var(--color-accent);
             transform: translateY(-3px);
         }
-        .icon {
-            color: var(--accent);
-            margin-right: 0.5rem;
-        }
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-        .github-link {
-            color: var(--accent);
-            font-weight: bold;
-        }
+
+        /* --- Forms/Textareas --- */
         textarea {
             width: 100%;
             padding: 1rem;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-family: inherit;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            resize: vertical; /* Allow resizing */
         }
         #summaryResult {
             margin-top: 1rem;
             padding: 1.5rem;
-            background: #e3f2fd;
+            background: var(--color-info);
             border-radius: 8px;
-            border-left: 5px solid var(--accent);
+            border-left: 5px solid var(--color-accent);
+            white-space: pre-wrap; /* Better handling of preformatted text */
         }
+        .github-link {
+            color: var(--color-accent);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .github-link:hover {
+            color: var(--color-secondary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto; /* Pushes footer to bottom */
+        }
+
+        /* --- Responsive Design (Stability) --- */
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
-            iframe { height: 400px; }
+            header p { font-size: 1rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 1.5rem; }
+            nav ul { justify-content: space-around; }
+            nav li { margin: 0.5rem 0.2rem; }
+            nav a { padding: 0.5rem 0.7rem; font-size: 0.9rem; }
+        }
+        @media (max-width: 480px) {
+            nav ul { flex-direction: column; }
+            nav li { margin: 0.2rem 0; }
+            nav a { justify-content: center; }
+            iframe { height: 350px; }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <h1>TUOLAT LABZ</h1>
-        <p>Lady Legalz Innovation Lab for The University of Law and Technology</p>
+        <p>Lady Legalz Innovation for The University of Law and Technology</p>
         <p>Welcome to TUOLAT LABZ 2026! Pioneering the frontier of Legal Innovation through AI and Technology</p>
     </header>
-   
-    <nav>
+    
+    <nav role="navigation" aria-label="Main Navigation">
         <ul>
             <li><a href="#home"><i class="fas fa-home icon"></i>Home</a></li>
             <li><a href="#judicial"><i class="fas fa-gavel icon"></i>Digital Court</a></li>
@@ -184,26 +249,26 @@
             <li><a href="#github"><i class="fab fa-github icon"></i>GitHub</a></li>
         </ul>
     </nav>
-   
-    <main>
+    
+    <main role="main">
         <section id="home">
-            <h2>Welcome to TUOLAT LABZ</h2>
+            <h2 id="welcome-heading">Welcome to TUOLAT LABZ</h2>
             <p>The official open-source Innovation Lab for The University of Law and Technology (TUOLAT). We are building the future of justice with collaborative projects at the intersection of legal technology, artificial intelligence, and digital judicial systems.</p>
-            <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ" target="_blank" class="github-link">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
+            <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ" target="_blank" rel="noopener noreferrer" class="github-link"><i class="fab fa-github"></i> github.com/TUOLATLABZ/TUOLATLABZ</a></p>
         </section>
-       
-        <section id="judicial">
-            <h2>Digital Judicial System & Process Innovation</h2>
+        
+        <section id="judicial" aria-labelledby="judicial-heading">
+            <h2 id="judicial-heading">Digital Judicial System & Process Innovation</h2>
             <p>Reimagining justice delivery through modern technology: virtual courtrooms, automated workflows, and AI-enhanced decision support for faster, fairer outcomes.</p>
             <ul>
-                <li><i class="fas fa-video icon"></i> Real-time virtual hearings with WebRTC</li>
+                <li><i class="fas fa-video icon"></i> Real-time virtual hearings</li>
                 <li><i class="fas fa-shield-alt icon"></i> Blockchain-secured legal records</li>
                 <li><i class="fas fa-brain icon"></i> Predictive analytics for case outcomes</li>
             </ul>
         </section>
-       
-        <section id="forensics">
-            <h2>AI Digital Legal Forensics</h2>
+        
+        <section id="forensics" aria-labelledby="forensics-heading">
+            <h2 id="forensics-heading">AI Digital Legal Forensics</h2>
             <p>Harnessing artificial intelligence to revolutionize evidence analysis, preservation, and presentation in the digital age.</p>
             <ul>
                 <li><i class="fas fa-fingerprint icon"></i> AI-powered digital evidence authentication</li>
@@ -211,88 +276,134 @@
                 <li><i class="fas fa-lock icon"></i> Compliance with global legal standards</li>
             </ul>
         </section>
-       
-        <section id="projects">
-            <h2>Featured Projects & Interactive Demos</h2>
+        
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Featured Projects & Interactive Demos</h2>
             <p>Experience our cutting-edge legal tech tools live. Interact with prototypes built by our community of innovators.</p>
-           
+            
             <h3><i class="fas fa-robot icon"></i> 1. Lady Legalz - Front Desk!</h3>
-            <p>AI-powered legal research assistant – ask questions about statutes, cases, or concepts. The underlying Gradio app has been updated to resolve the runtime error caused by the deprecated <code>clear_btn</code> parameter in newer Gradio versions.</p>
+            <p>AI-powered legal research assistant – ask questions about statutes, cases, or concepts. The underlying Gradio app is optimized for stability and speed.</p>
             <div class="demo-container">
-                <iframe src="https://tuolatlabz-lady-legalz.hf.space" frameborder="0" width="100%" height="600"></iframe>
+                <iframe src="https://tuolatlabz-lady-legalz.hf.space" title="Lady Legalz AI Chatbot Demo" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
-           
+            
             <h3><i class="fas fa-gavel icon"></i> 2. Lady Legalz Digital Court</h3>
             <p>Join a secure virtual hearing powered by Jitsi. Enter your name and start!</p>
-            <div id="jitsi-container" style="width:100%; max-width:800px; margin:0 auto;"></div>
-            <script src="https://meet.jit.si/external_api.js"></script>
-            <script>
-              const domain = "meet.jit.si";
-              const options = {
-                roomName: "LadyLegalz-Digital-Court",
-                width: "100%",
-                height: 500,
-                parentNode: document.querySelector('#jitsi-container'),
-                configOverwrite: { startWithAudioMuted: true, disableModeratorIndicator: false },
-                interfaceConfigOverwrite: { TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'raisehand', 'tileview'] },
-                userInfo: { displayName: "Paralegal" } // Optional default name
-              };
-              const api = new JitsiMeetExternalAPI(domain, options);
-            </script>
-           
+            <div id="jitsi-container" style="width:100%; max-width:800px; margin:0 auto; min-height: 500px;" aria-live="polite" aria-label="Jitsi Video Conference Embed"></div>
+            
             <h3><i class="fas fa-file-contract icon"></i> 3. ContractGen</h3>
             <p>Generate professional legal contracts instantly from natural language descriptions.</p>
             <div class="demo-container">
-                <iframe src="https://contractgen-tuolat.streamlit.app" title="ContractGen Demo"></iframe>
+                <iframe src="https://contractgen-tuolat.streamlit.app" title="ContractGen Demo" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
-           
-            <h3><i class="fas fa-gavel icon"></i> 4. CaseLaw Summarizer</h3>
+            
+            <h3><i class="fas fa-book-open icon"></i> 4. CaseLaw Summarizer</h3>
             <p>Paste any court opinion and receive an instant AI-generated summary with key holdings.</p>
             <div class="demo-container">
-                <textarea id="caseText" rows="6" placeholder="Paste full case law text here for instant summarization..."></textarea>
-                <button onclick="summarizeCase()"><i class="fas fa-magic"></i> Generate AI Summary</button>
-                <div id="summaryResult"></div>
-                <script>
-                    function summarizeCase() {
-                        const input = document.getElementById('caseText').value.trim();
-                        if (!input) {
-                            document.getElementById('summaryResult').innerHTML = '<strong style="color:red;">Please paste case text first.</strong>';
-                            return;
-                        }
-                        // Simulated AI response (replace with real API in production)
-                        const summary = `🔹 <strong>Key Holdings</strong>\n• Plaintiff prevailed on breach of contract claim\n• Digital signatures validated under E-SIGN Act\n• Damages awarded: $150,000 plus interest\n\n🔹 <strong>Ratio Decidendi</strong>\nThe court found clear intent from electronic communications and upheld enforceability of online agreements.\n\n🔹 <strong>Precedent Impact</strong>\nStrengthens legal standing of electronic contracts in commercial litigation.`;
-                        document.getElementById('summaryResult').innerHTML = '<strong>AI-Generated Summary:</strong><br><pre style="background:none;border:none;padding:0;">' + summary + '</pre>';
-                    }
-                </script>
-                <p><em>TUOLAT LABZ 2026</em></p>
+                <textarea id="caseText" rows="6" placeholder="Paste full case law text here for instant summarization..." aria-label="Case law text input"></textarea>
+                <button onclick="summarizeCase()" class="action-button"><i class="fas fa-magic"></i> Generate AI Summary</button>
+                <div id="summaryResult" role="status" aria-live="polite"></div>
+                <p><em>TUOLAT LABZ 2026 - Simulated Demo</em></p>
             </div>
         </section>
-       
-        <section id="github">
-            <h2>GitHub Organization & Join Us</h2>
+        
+        <section id="github" aria-labelledby="github-heading">
+            <h2 id="github-heading">GitHub Organization & Join Us</h2>
             <p>Explore and contribute to our open-source ecosystem:</p>
-            <p><a href="https://github.com/TUOLATLABZ" target="_blank" class="github-link"><i class="fab fa-github icon"></i> github.com/TUOLATLABZ</a></p>
+            <p><a href="https://github.com/TUOLATLABZ" target="_blank" rel="noopener noreferrer" class="github-link"><i class="fab fa-github icon"></i> github.com/TUOLATLABZ</a></p>
             <p>All projects are MIT licensed. Students, researchers, developers, and legal professionals welcome!</p>
             <p><strong>Contact:</strong> innovation@tuolatjuris.org</p>
         </section>
     </main>
-   
-    <footer>
+    
+    <footer role="contentinfo">
         <p>&copy; 2026 TUOLAT LABZ - The University of Law and Technology. Pioneering Legal Innovation.</p>
     </footer>
-   
+    
+    <script src="https://meet.jit.si/external_api.js"></script>
     <script>
-        // Smooth scrolling
+        // Jitsi Initialization
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "LadyLegalz-Digital-Court-V4", // Changed room name for V4 release distinction
+            width: "100%",
+            height: 500,
+            parentNode: document.querySelector('#jitsi-container'),
+            configOverwrite: { 
+                startWithAudioMuted: true, 
+                disableModeratorIndicator: false,
+                enableClosePage: false // Prevents Jitsi from closing the tab on end meeting
+            },
+            interfaceConfigOverwrite: { 
+                TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'raisehand', 'tileview', 'fullscreen'],
+                SHOW_JITSI_WATERMARK: false 
+            },
+            userInfo: { displayName: "TUOLAT Guest" }
+        };
+        // The API object is created but not explicitly used here, for embedding
+        const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+
+    <script>
+        // --- General JavaScript (Faster/Smarter) ---
+        
+        // 1. Smooth scrolling (Optimized)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                // Use a try-catch for stability in case the target is missing
+                try {
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Focus the target element for better accessibility after scroll
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus();
+                } catch (error) {
+                    console.error("Scroll target not found:", this.getAttribute('href'));
+                }
             });
         });
+
+        // 2. Case Summarizer Function (Smarter simulation)
+        function summarizeCase() {
+            const input = document.getElementById('caseText').value.trim();
+            const resultDiv = document.getElementById('summaryResult');
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing case text...';
+
+            if (!input) {
+                resultDiv.innerHTML = '<strong style="color:red;">Please paste case text first.</strong>';
+                return;
+            }
+
+            // Simulate Network Delay and AI Processing
+            setTimeout(() => {
+                const summary = `
+**⚖️ AI-Generated Case Summary**
+
+---
+**1. Key Holdings**
+* **Breach of Contract:** Plaintiff (TechCorp) prevailed on the claim that Defendant (SoftDev Inc.) failed to deliver the software module by the agreed-upon deadline.
+* **Digital Signatures:** The court validated digital signatures exchanged via email under the US **E-SIGN Act (15 U.S.C. § 7001)**, confirming enforceability of the online agreement.
+* **Damages:** The court awarded \$150,000 in expectation damages plus accrued interest at 5% per annum.
+
+---
+**2. Ratio Decidendi (Reasoning)**
+The court found clear intent and acceptance from electronic communications, establishing all four elements of a valid contract. The delay constituted a material breach, and the digital signature method satisfied the Statute of Frauds requirements by demonstrating assent.
+
+---
+**3. Precedent Impact**
+This decision strengthens the legal standing of electronic contracts and digital assent processes in commercial litigation, particularly in the technology sector.
+                `.trim(); // Use trim to clean up leading/trailing whitespace
+
+                resultDiv.innerHTML = summary;
+            }, 1500); // 1.5 second simulated delay
+        }
     </script>
 </body>
 </html>
+
+            
