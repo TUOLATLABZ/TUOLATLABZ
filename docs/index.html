@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUOLAT LABZ - University of Law and Technology Innovation Lab</title>
+    <title>TUOLAT LABZ - Lady Legalz Beta 4</title>
     <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
@@ -171,27 +171,27 @@
 <body>
     <header>
         <h1>TUOLAT LABZ</h1>
-        <p>Innovation Lab for The University of Law and Technology</p>
+        <p>Lady Legalz Innovation Lab for The University of Law and Technology</p>
         <p>Welcome to TUOLAT LABZ 2026! Pioneering the frontier of Legal Innovation through AI and Technology</p>
     </header>
-    
+   
     <nav>
         <ul>
             <li><a href="#home"><i class="fas fa-home icon"></i>Home</a></li>
-            <li><a href="#judicial"><i class="fas fa-gavel icon"></i>Digital Judicial</a></li>
+            <li><a href="#judicial"><i class="fas fa-gavel icon"></i>Digital Court</a></li>
             <li><a href="#forensics"><i class="fas fa-search icon"></i>AI Forensics</a></li>
             <li><a href="#projects"><i class="fas fa-code icon"></i>Projects & Demos</a></li>
             <li><a href="#github"><i class="fab fa-github icon"></i>GitHub</a></li>
         </ul>
     </nav>
-    
+   
     <main>
         <section id="home">
             <h2>Welcome to TUOLAT LABZ</h2>
             <p>The official open-source Innovation Lab for The University of Law and Technology (TUOLAT). We are building the future of justice with collaborative projects at the intersection of legal technology, artificial intelligence, and digital judicial systems.</p>
             <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ" target="_blank" class="github-link">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
         </section>
-        
+       
         <section id="judicial">
             <h2>Digital Judicial System & Process Innovation</h2>
             <p>Reimagining justice delivery through modern technology: virtual courtrooms, automated workflows, and AI-enhanced decision support for faster, fairer outcomes.</p>
@@ -201,7 +201,7 @@
                 <li><i class="fas fa-brain icon"></i> Predictive analytics for case outcomes</li>
             </ul>
         </section>
-        
+       
         <section id="forensics">
             <h2>AI Digital Legal Forensics</h2>
             <p>Harnessing artificial intelligence to revolutionize evidence analysis, preservation, and presentation in the digital age.</p>
@@ -211,19 +211,19 @@
                 <li><i class="fas fa-lock icon"></i> Compliance with global legal standards</li>
             </ul>
         </section>
-        
+       
         <section id="projects">
             <h2>Featured Projects & Interactive Demos</h2>
             <p>Experience our cutting-edge legal tech tools live. Interact with prototypes built by our community of innovators.</p>
-            
-            <h3><i class="fas fa-robot icon"></i> 1. LegalAI Assistant</h3>
-            <p>AI-powered legal research assistant – ask questions about statutes, cases, or concepts.</p>
+           
+            <h3><i class="fas fa-robot icon"></i> 1. Lady Legalz - Front Desk!</h3>
+            <p>AI-powered legal research assistant – ask questions about statutes, cases, or concepts. The underlying Gradio app has been updated to resolve the runtime error caused by the deprecated <code>clear_btn</code> parameter in newer Gradio versions.</p>
             <div class="demo-container">
                 <iframe src="https://tuolatlabz-lady-legalz.hf.space" frameborder="0" width="100%" height="600"></iframe>
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
-            
-            <h3><i class="fas courtroom icon"></i> 2. Lady Legalz Digital Courtroom</h3>
+           
+            <h3><i class="fas fa-gavel icon"></i> 2. Lady Legalz Digital Court</h3>
             <p>Join a secure virtual hearing powered by Jitsi. Enter your name and start!</p>
             <div id="jitsi-container" style="width:100%; max-width:800px; margin:0 auto;"></div>
             <script src="https://meet.jit.si/external_api.js"></script>
@@ -236,19 +236,18 @@
                 parentNode: document.querySelector('#jitsi-container'),
                 configOverwrite: { startWithAudioMuted: true, disableModeratorIndicator: false },
                 interfaceConfigOverwrite: { TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'raisehand', 'tileview'] },
-                userInfo: { displayName: "Paralegal" }  // Optional default name
+                userInfo: { displayName: "Paralegal" } // Optional default name
               };
               const api = new JitsiMeetExternalAPI(domain, options);
             </script>
-            </div>
-            
+           
             <h3><i class="fas fa-file-contract icon"></i> 3. ContractGen</h3>
             <p>Generate professional legal contracts instantly from natural language descriptions.</p>
             <div class="demo-container">
                 <iframe src="https://contractgen-tuolat.streamlit.app" title="ContractGen Demo"></iframe>
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
-            
+           
             <h3><i class="fas fa-gavel icon"></i> 4. CaseLaw Summarizer</h3>
             <p>Paste any court opinion and receive an instant AI-generated summary with key holdings.</p>
             <div class="demo-container">
@@ -270,7 +269,7 @@
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
         </section>
-        
+       
         <section id="github">
             <h2>GitHub Organization & Join Us</h2>
             <p>Explore and contribute to our open-source ecosystem:</p>
@@ -279,11 +278,11 @@
             <p><strong>Contact:</strong> innovation@tuolatjuris.org</p>
         </section>
     </main>
-    
+   
     <footer>
         <p>&copy; 2026 TUOLAT LABZ - The University of Law and Technology. Pioneering Legal Innovation.</p>
     </footer>
-    
+   
     <script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
