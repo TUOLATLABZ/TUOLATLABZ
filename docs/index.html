@@ -223,14 +223,23 @@
                 <p><em>TUOLAT LABZ 2026</em></p>
             </div>
             
-            <h3><i class="fas fa-building icon"></i> 2. Digital Courtroom Prototype</h3>
-            <p>Join a fully interactive virtual courtroom with video, chat, and document sharing.</p>
-            <div class="demo-container">
-                <div class="demo-buttons">
-                    <button onclick="window.open('https://whereby.com/tuolat-courtroom', '_blank')"><i class="fas fa-video"></i> Enter Mock Courtroom</button>
-                    <button onclick="alert('Features: Real-time video, screen sharing, encrypted chat, and evidence presentation.')"><i class="fas fa-info-circle"></i> View Features</button>
-                </div>
-                <p><em>TUOLAT LABZ 2026</em></p>
+            <h3><i class="fas fa-courtroom icon"></i> 2. Lady Legalz Digital Courtroom</h3>
+            <p>Join a secure virtual hearing powered by Jitsi. Enter your name and start!</p>
+            <div id="jitsi-container" style="width:100%; max-width:800px; margin:0 auto;"></div>
+            <script src="https://meet.jit.si/external_api.js"></script>
+            <script>
+              const domain = "meet.jit.si";
+              const options = {
+                roomName: "LadyLegalz-Hearing-Room",
+                width: "100%",
+                height: 500,
+                parentNode: document.querySelector('#jitsi-container'),
+                configOverwrite: { startWithAudioMuted: true, disableModeratorIndicator: false },
+                interfaceConfigOverwrite: { TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'raisehand', 'tileview'] },
+                userInfo: { displayName: "Paralegal" }  // Optional default name
+              };
+              const api = new JitsiMeetExternalAPI(domain, options);
+            </script>
             </div>
             
             <h3><i class="fas fa-file-contract icon"></i> 3. ContractGen</h3>
