@@ -1,220 +1,226 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUOLAT LABZ 2026 - Lady Legalz Quantum Legal Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUOLAT LABZ 2026 - Lady Legalz Quantum Legal Hub</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        :root {
-            --primary: #0a1e3d;
-            --secondary: #112a5e;
-            --accent: #00eaff;
-            --neon: #7c3aed;
-            --glow: #00ffff;
-            --dark-bg: #000814;
-            --card-bg: rgba(10, 30, 61, 0.4);
-            --text: #e0f2fe;
-            --light-text: #a0d8ef;
-            --animation-speed: 1.5s;
-        }
+<!-- Styles -->
+<style>
+:root {
+    --primary: #0a1e3d;
+    --secondary: #112a5e;
+    --accent: #00eaff;
+    --neon: #7c3aed;
+    --glow: #00ffff;
+    --dark-bg: #000814;
+    --card-bg: rgba(10,30,61,0.5);
+    --text: #e0f2fe;
+    --light-text: #a0d8ef;
+    --animation-speed: 1.5s;
+    --gradient-bg: linear-gradient(135deg, #0a1e3d, #112a5e, #001d3d);
+}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0; padding: 0;
-            background: linear-gradient(to bottom, var(--dark-bg), #001d3d);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0; padding: 0;
+    background: var(--gradient-bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 234, 255, 0.08), transparent 70%);
-            pointer-events: none;
-            animation: pulseGlow var(--animation-speed) infinite alternate;
-        }
+/* Dynamic radial neon glow */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0,234,255,0.08), transparent 70%);
+    pointer-events: none;
+    animation: pulseGlow var(--animation-speed) infinite alternate;
+}
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.12); opacity: 0.95; }
+}
 
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.1); opacity: 0.9; }
-        }
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent);
+    text-shadow: 0 0 25px rgba(0,234,255,0.6);
+    margin: 0.5em 0;
+}
 
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent);
-            text-shadow: 0 0 25px rgba(0, 234, 255, 0.6);
-        }
+header {
+    background: linear-gradient(135deg, rgba(10,30,61,0.9), rgba(17,42,94,0.85));
+    backdrop-filter: blur(12px);
+    text-align: center;
+    padding: 8rem 1rem 4rem;
+    position: relative;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.7);
+    border-bottom: 2px solid var(--neon);
+    animation: headerFade 2s ease-in-out;
+}
+@keyframes headerFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        header {
-            background: linear-gradient(135deg, rgba(10,30,61,0.85), rgba(17,42,94,0.85));
-            backdrop-filter: blur(12px);
-            color: var(--text);
-            padding: 8rem 1rem 4rem;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
-        }
+nav {
+    background: rgba(10,30,61,0.7);
+    backdrop-filter: blur(15px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 6px 30px rgba(0,234,255,0.25);
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0; padding: 0;
+}
+nav a {
+    color: var(--text);
+    padding: 0.8rem 2rem;
+    margin: 0.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    background: rgba(0,234,255,0.12);
+    border: 1px solid rgba(0,234,255,0.3);
+}
+nav a:hover {
+    background: var(--accent);
+    color: var(--dark-bg);
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 0 40px rgba(0,234,255,0.9);
+}
 
-        nav {
-            background: rgba(10,30,61,0.65);
-            backdrop-filter: blur(15px);
-            padding: 1.2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 25px rgba(0,234,255,0.25);
-        }
+main {
+    max-width: 1500px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            list-style: none;
-            margin: 0; padding: 0;
-        }
+/* Card Sections */
+section {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(0,234,255,0.25);
+    margin-bottom: 5rem;
+    padding: 4rem;
+    border-radius: 28px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+section:hover {
+    transform: translateY(-18px) scale(1.02);
+    box-shadow: 0 35px 90px rgba(0,234,255,0.35);
+}
 
-        nav a {
-            color: var(--text);
-            padding: 0.8rem 1.8rem;
-            margin: 0.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.4s ease;
-            background: rgba(0,234,255,0.1);
-            border: 1px solid rgba(0,234,255,0.3);
-        }
+/* Flagship card highlight */
+.flagship {
+    border: 2px solid var(--neon);
+    background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(0,234,255,0.1));
+    box-shadow: 0 0 60px rgba(124,58,237,0.35);
+}
 
-        nav a:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 35px rgba(0,234,255,0.8);
-        }
+/* Demo container animations */
+.demo-container {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(0,0,0,0.3);
+    border-radius: 22px;
+    border: 1px solid var(--accent);
+    box-shadow: inset 0 0 45px rgba(0,234,255,0.15);
+    animation: fadeIn 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        main {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
+iframe {
+    width: 100%;
+    height: 720px;
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    box-shadow: 0 0 60px rgba(0,234,255,0.55);
+}
 
-        section {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0,234,255,0.2);
-            margin-bottom: 4rem;
-            padding: 3.5rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
+/* Action buttons with neon gradient */
+.action-button {
+    padding: 1.2rem 3rem;
+    background: linear-gradient(45deg, var(--accent), var(--neon));
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.35rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 45px rgba(0,234,255,0.55);
+    transition: all 0.5s;
+}
+.action-button:hover {
+    transform: scale(1.12) rotateZ(-1.2deg);
+    box-shadow: 0 0 65px rgba(124,58,237,0.85);
+}
 
-        section:hover {
-            transform: translateY(-15px) scale(1.01);
-            box-shadow: 0 30px 80px rgba(0,234,255,0.25);
-        }
+/* Features grid with interactive cards */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+.feature-card {
+    background: rgba(17,42,94,0.55);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0,234,255,0.3);
+    text-align: center;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+.feature-card:hover {
+    background: rgba(0,234,255,0.15);
+    transform: translateY(-12px) scale(1.04);
+    box-shadow: 0 0 45px rgba(0,234,255,0.5);
+}
+.feature-card i {
+    font-size: 3.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
 
-        .flagship {
-            border: 2px solid var(--neon);
-            background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(0,234,255,0.08));
-            box-shadow: 0 0 50px rgba(124,58,237,0.3);
-        }
+/* Footer */
+footer {
+    background: var(--primary);
+    color: var(--text);
+    text-align: center;
+    padding: 5rem;
+    backdrop-filter: blur(12px);
+    border-top: 2px solid var(--neon);
+}
 
-        .demo-container {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(0,0,0,0.25);
-            border-radius: 20px;
-            border: 1px solid var(--accent);
-            box-shadow: inset 0 0 40px rgba(0,234,255,0.1);
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        iframe {
-            width: 100%;
-            height: 700px;
-            border: 2px solid var(--accent);
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(0,234,255,0.5);
-        }
-
-        .action-button {
-            padding: 1.2rem 3rem;
-            background: linear-gradient(45deg, var(--accent), var(--neon));
-            color: var(--dark-bg);
-            border: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 40px rgba(0,234,255,0.5);
-            transition: all 0.4s;
-        }
-
-        .action-button:hover {
-            transform: scale(1.1) rotateZ(-1deg);
-            box-shadow: 0 0 60px rgba(124,58,237,0.8);
-        }
-
-        footer {
-            background: var(--primary);
-            color: var(--text);
-            text-align: center;
-            padding: 4rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(17,42,94,0.45);
-            padding: 2rem;
-            border-radius: 18px;
-            border: 1px solid rgba(0,234,255,0.25);
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            background: rgba(0,234,255,0.12);
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 0 35px rgba(0,234,255,0.4);
-        }
-
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 3.2rem; }
-            iframe { height: 500px; }
-            header { padding: 6rem 1rem 3rem; }
-        }
-    </style>
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    iframe { height: 500px; }
+    header { padding: 6rem 1rem 3rem; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -246,7 +252,6 @@
 <section id="lady-legalz">
     <h2>Lady Legalz AI - Autonomous Legal Agent (Beta 2026)</h2>
     <p>Multimodal AI agent capable of contract drafting, legal research, risk scoring, and cross-jurisdictional advisory.</p>
-
     <div class="demo-container">
         <iframe src="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" allowfullscreen></iframe>
     </div>
@@ -256,7 +261,6 @@
 <section id="forensics">
     <h2>AI-Powered Digital Legal Forensics</h2>
     <p>Deep learning for evidence authentication, deepfake detection, blockchain timestamp verification, and predictive anomaly detection.</p>
-
     <div class="features-grid">
         <div class="feature-card">
             <i class="fas fa-fingerprint"></i>
@@ -279,7 +283,6 @@
 <section id="digital-court">
     <h2>Lady Legalz Digital Court - Secure Virtual Platform</h2>
     <p>Encrypted virtual hearings with AI transcription, live translation, and automated compliance monitoring.</p>
-
     <div class="demo-container">
         <div id="jitsi-container" style="height:600px; border-radius: 20px; overflow: hidden;"></div>
     </div>
@@ -316,18 +319,20 @@
     <p>© 2026 TUOLAT LABZ - Quantum Leap in Legal Innovation</p>
 </footer>
 
+<!-- Jitsi Integration -->
 <script src="https://meet.jit.si/external_api.js"></script>
 <script>
-    const domain = "meet.jit.si";
-    const options = {
-        roomName: "LadyLegalz-Digital-Court-V6",
-        width: "100%",
-        height: "100%",
-        parentNode: document.querySelector('#jitsi-container'),
-        configOverwrite: { startWithAudioMuted: true, startWithVideoMuted: true },
-        interfaceConfigOverwrite: { TILE_VIEW_MAX_COLUMNS: 4 }
-    };
-    const api = new JitsiMeetExternalAPI(domain, options);
+const domain = "meet.jit.si";
+const options = {
+    roomName: "LadyLegalz-Digital-Court-V6",
+    width: "100%",
+    height: "100%",
+    parentNode: document.querySelector('#jitsi-container'),
+    configOverwrite: { startWithAudioMuted: true, startWithVideoMuted: true },
+    interfaceConfigOverwrite: { TILE_VIEW_MAX_COLUMNS: 4 }
+};
+const api = new JitsiMeetExternalAPI(domain, options);
 </script>
+
 </body>
 </html>
