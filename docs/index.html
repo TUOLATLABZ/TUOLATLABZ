@@ -3,165 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUOLAT LABZ - Lady Legalz Quantum Innovation Hub 2026</title>
+    <title>TUOLAT LABZ - Lady Legalz Innovation Hub 2026</title>
   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
           integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --color-primary: #0a001f; /* Deep Cosmic Blue */
-            --color-secondary: #1a0033; /* Neon Purple */
-            --color-accent: #a78bfa; /* Neon Lavender */
-            --color-light: #f0f4f8;
-            --color-white: #ffffff;
-            --color-dark: #e0e0ff;
-            --color-success: #34d399;
-            --color-info: #e0f2fe;
-            --neon-glow: 0 0 20px rgba(167, 139, 250, 0.6);
+            --primary: #003366;
+            --secondary: #0059b3;
+            --accent: #00aaff;
+            --neon: #a78bfa;
+            --light: #f0f8ff;
+            --white: #ffffff;
+            --dark: #1e293b;
+            --success: #10b981;
         }
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.7;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #0f172a, #1e1b4b);
-            color: var(--color-dark);
+            background: linear-gradient(to bottom, var(--light), #cfe8fc);
+            color: var(--dark);
             min-height: 100vh;
         }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
-            color: #a78bfa;
-            text-shadow: var(--neon-glow);
         }
-        h1 { 
-            font-size: 3.5rem; 
+        h1 {
+            font-size: 3.8rem;
             font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(90deg, #a78bfa, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(0,170,255,0.5);
         }
         header {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            color: var(--color-white);
-            padding: 5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 6rem 1rem;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(167, 139, 250, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .badge-2026 {
-            background: linear-gradient(135deg, #6366f1, #a78bfa);
-            color: white;
-            padding: 0.5rem 1rem;
+        header p {
+            font-size: 1.4rem;
+            max-width: 900px;
+            margin: 1.5rem auto;
+        }
+        nav {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav a {
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
             border-radius: 50px;
-            font-size: 1.2rem;
-            display: inline-block;
-            margin: 1rem 0;
-            box-shadow: var(--neon-glow);
-            animation: pulse 3s infinite;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
         }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.6); }
-            50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.9); }
+        nav a:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0,170,255,0.6);
         }
-        nav[role="navigation"] a:hover {
-            background: var(--color-accent);
-            box-shadow: var(--neon-glow);
+        main {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
         section {
-            background: rgba(30, 20, 60, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(167, 139, 250, 0.3);
-            box-shadow: var(--neon-glow);
+            background: var(--white);
+            margin-bottom: 4rem;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        section:hover {
+            transform: translateY(-10px);
         }
         .demo-container {
-            background: rgba(15, 10, 40, 0.6);
-            border: 1px solid rgba(167, 139, 250, 0.4);
-            box-shadow: var(--neon-glow);
+            margin-top: 2.5rem;
+            padding: 2.5rem;
+            background: var(--light);
+            border-radius: 16px;
+            box-shadow: inset 0 4px 20px rgba(0,0,0,0.1);
         }
         iframe {
-            border: 2px solid rgba(167, 139, 250, 0.5);
-            box-shadow: 0 0 30px rgba(167, 139, 250, 0.4);
+            width: 100%;
+            height: 600px;
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,170,255,0.3);
         }
         .flagship {
-            border-left: 6px solid #a78bfa;
-            padding-left: 1.5rem;
-            box-shadow: var(--neon-glow);
+            border: 4px solid var(--neon);
+            background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(129,140,248,0.1));
+        }
+        .action-button {
+            padding: 1rem 2rem;
+            background: var(--success);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(16,185,129,0.4);
+            transition: all 0.3s;
+        }
+        .action-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(16,185,129,0.6);
         }
         footer {
-            background: var(--color-primary);
-            color: #818cf8;
-            text-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.1rem;
         }
-        /* Keep all other original styles */
+        @media (max-width: 768px) {
+            iframe { height: 450px; }
+            h1 { font-size: 2.8rem; }
+        }
     </style>
 </head>
 <body>
-    <header role="banner">
+    <header>
         <h1>TUOLAT LABZ 2026</h1>
-        <p>Lady Legalz Quantum Innovation Hub</p>
-        <div class="badge-2026">⚡ Quantum Legal Tech Era ⚡</div>
-        <p>Welcome to the future of justice — pioneering AI, blockchain, and neural contract intelligence.</p>
+        <p>Lady Legalz Innovation Hub for The University of Law and Technology</p>
+        <p>Pioneering the Future of Justice with AI, Blockchain, and Quantum Legal Tech</p>
     </header>
   
-    <nav role="navigation" aria-label="Main Navigation">
+    <nav>
         <ul>
-            <li><a href="#home"><i class="fas fa-home icon"></i> Home</a></li>
-            <li><a href="#judicial"><i class="fas fa-gavel icon"></i> Digital Court</a></li>
-            <li><a href="#forensics"><i class="fas fa-search icon"></i> AI Forensics</a></li>
-            <li><a href="#projects"><i class="fas fa-code icon"></i> Projects & Demos</a></li>
-            <li><a href="#github"><i class="fab fa-github icon"></i> GitHub</a></li>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#judicial"><i class="fas fa-gavel"></i> Digital Court</a></li>
+            <li><a href="#forensics"><i class="fas fa-search"></i> AI Forensics</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects & Demos</a></li>
+            <li><a href="#github"><i class="fab fa-github"></i> GitHub</a></li>
         </ul>
     </nav>
   
-    <main role="main">
+    <main>
         <section id="home">
-            <h2>Welcome to TUOLAT LABZ 2026</h2>
-            <p>Leading the quantum leap in legal innovation through open-source AI, blockchain-secured justice, and neural contract systems.</p>
-            <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ" target="_blank" class="github-link">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
+            <h2>Welcome to TUOLAT LABZ</h2>
+            <p>The official open-source Innovation Lab for The University of Law and Technology (TUOLAT). Building the future of justice with AI and collaborative tech.</p>
+            <p><strong>Main Hub:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
         </section>
       
-        <!-- Keep Judicial and Forensics sections unchanged or enhanced similarly -->
+        <section id="judicial">
+            <h2>Digital Judicial System</h2>
+            <p>Reimagining justice with virtual courtrooms and AI support.</p>
+            <!-- Features list -->
+        </section>
       
-        <section id="projects" aria-labelledby="projects-heading">
-            <h2 id="projects-heading">Flagship 2026 Projects & Live Neural Demos</h2>
-            <p>Experience tomorrow's legal tech today — all prototypes powered by cutting-edge AI.</p>
+        <section id="forensics">
+            <h2>AI Digital Legal Forensics</h2>
+            <p>Advanced evidence analysis with AI.</p>
+            <!-- Features list -->
+        </section>
+      
+        <section id="projects" class="flagship">
+            <h2>Flagship Projects & Live Demos 2026</h2>
+            <p>Interact with our cutting-edge tools!</p>
           
-            <h3 class="flagship"><i class="fas fa-robot icon"></i> 1. Lady Legalz ContractGen 2026 (Flagship)</h3>
-            <p>Next-gen neural contract engine: Generate enforceable contracts with risk analysis across general, real estate, probate, family, and cryptocurrency law. Features glassmorphic UI, neon quantum design, and download functionality.</p>
+            <h3>🌟 Flagship: Lady Legalz ContractGen 2026</h3>
+            <p>Next-Gen AI Contract Generator with risk analysis for business, real estate, probate, family, and crypto law.</p>
             <div class="demo-container">
-                <iframe src="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" title="Lady Legalz ContractGen 2026 Live Demo" height="600px" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-                <p><em>TUOLAT LABZ 2026 — Quantum Contract Intelligence</em></p>
+                <iframe src="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" title="ContractGen 2026 Demo"></iframe>
             </div>
-            <p>Live: <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank">tuolatlabz.github.io/Lady-Legalz-ContractGen/</a> | 
-               Source: <a href="https://github.com/TUOLATLABZ/Lady-Legalz-ContractGen" target="_blank">GitHub Repo</a></p>
+            <p>Live: <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/">Open Full App</a></p>
           
-            <h3><i class="fas fa-comments icon"></i> 2. Lady Legalz - Front Desk!</h3>
-            <!-- Keep existing -->
+            <h3>⚖️ Lady Legalz Digital Court</h3>
+            <p>Secure virtual hearing room.</p>
+            <div class="demo-container">
+                <div id="jitsi-container" style="height:600px;"></div>
+            </div>
           
-            <h3><i class="fas fa-gavel icon"></i> 3. Lady Legalz Digital Court</h3>
-            <!-- Keep existing -->
-          
-            <h3><i class="fas fa-file-contract icon"></i> 4. Legacy ContractGen</h3>
-            <!-- Keep if wanted, or remove -->
-          
-            <h3><i class="fas fa-book-open icon"></i> 5. CaseLaw Neural Summarizer</h3>
-            <!-- Keep existing -->
+            <!-- Keep other demos if desired -->
         </section>
       
         <section id="github">
-            <h2>Open-Source Quantum Ecosystem</h2>
-            <p>Join the revolution: <a href="https://github.com/TUOLATLABZ" target="_blank" class="github-link">github.com/TUOLATLABZ</a></p>
+            <h2>Join Our Open-Source Community</h2>
+            <p><a href="https://github.com/TUOLATLABZ">github.com/TUOLATLABZ</a></p>
         </section>
     </main>
   
     <footer>
-        <p>© 2026 TUOLAT LABZ - Quantum Court Initiative. Pioneering Neural Legal Evolution.</p>
+        <p>&copy; 2026 TUOLAT LABZ - Pioneering Legal Innovation.</p>
     </footer>
   
-    <!-- Keep existing scripts (Jitsi, summarizer, smooth scroll) -->
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script>
+        // Jitsi (unchanged)
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "LadyLegalz-Digital-Court-V4",
+            width: "100%",
+            height: "100%",
+            parentNode: document.querySelector('#jitsi-container'),
+            // ... original options ...
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
 </body>
 </html>
