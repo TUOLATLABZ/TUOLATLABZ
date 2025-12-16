@@ -19,31 +19,78 @@
             --light-text: #b3ffff;
             --card-bg: rgba(20, 10, 45, 0.6);
             --border: rgba(0, 212, 255, 0.3);
+            --bg-gradient: linear-gradient(to bottom, #0a001f, #15002f);
+            --transition-duration: 0.5s;
+        }
+        [data-theme="light"] {
+            --primary: #f8f9fa;
+            --secondary: #e9ecef;
+            --accent: #007bff;
+            --neon: #6f42c1;
+            --text: #212529;
+            --light-text: #495057;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --border: rgba(0, 123, 255, 0.3);
+            --bg-gradient: linear-gradient(to bottom, #e3f2fd, #bbdefb);
         }
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom, #0a001f, #15002f);
+            background: var(--bg-gradient);
             color: var(--text);
             min-height: 100vh;
             line-height: 1.6;
+            transition: background var(--transition-duration) ease, color var(--transition-duration) ease;
         }
         body::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1), transparent 50%);
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08), transparent 50%);
             pointer-events: none;
-            animation: subtle-float 40s ease-in-out infinite alternate;
+            animation: subtle-float 60s ease-in-out infinite alternate;
+            opacity: 1;
+            transition: background var(--transition-duration) ease, opacity var(--transition-duration) ease;
+        }
+        [data-theme="light"] body::before {
+            opacity: 0.1;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 123, 255, 0.1), transparent 50%);
         }
         @keyframes subtle-float {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(5%, -5%); }
+            100% { transform: translate(3%, -3%); }
         }
         header {
             text-align: center;
             padding: 100px 20px 80px;
             position: relative;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+        [data-theme="light"] .theme-toggle {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent);
+        }
+        .theme-toggle i {
+            transition: transform 0.6s ease;
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
@@ -52,12 +99,20 @@
             text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
             margin: 0;
             letter-spacing: 4px;
+            transition: all var(--transition-duration) ease;
+        }
+        [data-theme="light"] h1 {
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
         }
         .subtitle {
             font-family: 'Exo 2', sans-serif;
             font-size: 1.6rem;
             color: #c4b5fd;
             margin: 15px 0;
+            transition: color var(--transition-duration) ease;
+        }
+        [data-theme="light"] .subtitle {
+            color: #6f42c1;
         }
         .tagline {
             font-size: 1.2rem;
@@ -73,6 +128,11 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: background var(--transition-duration) ease;
+        }
+        [data-theme="light"] nav {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             display: flex;
@@ -100,6 +160,9 @@
             border-color: var(--accent);
             transform: translateY(-3px);
         }
+        [data-theme="light"] nav a:hover {
+            background: rgba(0, 123, 255, 0.15);
+        }
         main {
             max-width: 1400px;
             margin: 40px auto;
@@ -113,7 +176,10 @@
             margin-bottom: 60px;
             border: 1px solid var(--border);
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        [data-theme="light"] section {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
         }
         section:hover {
             transform: translateY(-8px);
@@ -122,6 +188,9 @@
             border-color: var(--neon);
             background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(0, 212, 255, 0.05));
         }
+        [data-theme="light"] .flagship {
+            background: linear-gradient(135deg, rgba(111, 66, 193, 0.05), rgba(0, 123, 255, 0.05));
+        }
         h2 {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent);
@@ -129,11 +198,19 @@
             text-align: center;
             margin-bottom: 30px;
             text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            transition: all var(--transition-duration) ease;
+        }
+        [data-theme="light"] h2 {
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
         }
         h3 {
             font-family: 'Exo 2', sans-serif;
             color: #c4b5fd;
             font-size: 1.4rem;
+            transition: color var(--transition-duration) ease;
+        }
+        [data-theme="light"] h3 {
+            color: #6f42c1;
         }
         .demo-container {
             margin-top: 30px;
@@ -141,6 +218,10 @@
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
             border: 1px solid var(--border);
+            transition: all var(--transition-duration) ease;
+        }
+        [data-theme="light"] .demo-container {
+            background: rgba(255, 255, 255, 0.2);
         }
         iframe {
             width: 100%;
@@ -148,6 +229,10 @@
             border: 2px solid var(--accent);
             border-radius: 16px;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+        [data-theme="light"] iframe {
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.2);
         }
         .action-button {
             padding: 16px 40px;
@@ -180,14 +265,35 @@
             text-align: center;
             transition: all 0.3s;
         }
+        [data-theme="light"] .feature-card, [data-theme="light"] .resource-card {
+            background: rgba(255, 255, 255, 0.5);
+        }
         .feature-card:hover, .resource-card:hover {
             background: rgba(0, 212, 255, 0.1);
             transform: translateY(-8px);
+        }
+        [data-theme="light"] .feature-card:hover, [data-theme="light"] .resource-card:hover {
+            background: rgba(0, 123, 255, 0.1);
         }
         .feature-card i {
             font-size: 3rem;
             color: var(--accent);
             margin-bottom: 15px;
+        }
+        .case-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+        [data-theme="light"] .case-image {
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2);
+        }
+        .case-image:hover {
+            transform: scale(1.03);
         }
         footer {
             text-align: center;
@@ -195,6 +301,10 @@
             background: rgba(0, 0, 0, 0.6);
             border-top: 1px solid var(--border);
             font-size: 1.1rem;
+            transition: all var(--transition-duration) ease;
+        }
+        [data-theme="light"] footer {
+            background: rgba(255, 255, 255, 0.6);
         }
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
@@ -202,6 +312,7 @@
             section { padding: 40px; }
             iframe { height: 500px; }
             nav a { padding: 0.6rem 1.5rem; font-size: 0.95rem; }
+            .theme-toggle { top: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -210,6 +321,9 @@
         <h1>TUOLAT LABZ</h1>
         <div class="subtitle">Neo-Quantum Legal Innovation Hub 2026</div>
         <div class="tagline">Advancing autonomous justice through AI agents, quantum-safe blockchain, and predictive intelligence in an open-source ecosystem.</div>
+        <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </div>
     </header>
     <nav>
         <ul>
@@ -218,6 +332,7 @@
             <li><a href="#forensics"><i class="fas fa-search-plus"></i> Quantum Forensics</a></li>
             <li><a href="#digital-court"><i class="fas fa-gavel"></i> Digital Court</a></li>
             <li><a href="#projects"><i class="fas fa-code-branch"></i> Flagship Projects</a></li>
+            <li><a href="#case-studies"><i class="fas fa-briefcase"></i> Quantum Case Studies</a></li>
             <li><a href="#resources"><i class="fas fa-link"></i> Resources</a></li>
             <li><a href="#github"><i class="fab fa-github"></i> GitHub</a></li>
         </ul>
@@ -229,15 +344,40 @@
             <p><strong>Main Repository:</strong> <a href="https://github.com/TUOLATLABZ/TUOLATLABZ">github.com/TUOLATLABZ/TUOLATLABZ</a></p>
             <button class="action-button" onclick="location.href='#projects'">Explore Projects</button>
         </section>
-        <!-- All other sections remain structurally identical but inherit the new styles -->
+
         <section id="lady-legalz">
-            <h2>Lady Legalz Beta 4 (2026)</h2>
-            <p>Multimodal AI for advanced contract analysis, jurisdictional insights, risk prediction, and generative drafting.</p>
+            <h2>Lady Legalz AI — Pioneering the World's Foremost Quantum-Enhanced Autonomous Legal Intelligence (2026 Vision)</h2>
+            <p>Lady Legalz represents the vanguard of legal AI innovation: the first fully autonomous, multimodal neural agent designed to redefine global legal practice. Building on the foundations of leading 2025 platforms like Lexis+ AI, Harvey, and Spellbook, Lady Legalz integrates advanced generative capabilities with quantum-resistant cryptography and predictive modeling—preparing for the quantum era while delivering unmatched performance today.</p>
+            <p>Engineered for unparalleled accuracy in contract intelligence, multi-jurisdictional analysis, risk forecasting, and generative drafting, she achieves superior reasoning across complex scenarios. With ongoing fine-tuning ("we just have to tweak her!"), Lady Legalz is evolving toward 98%+ precision in outcome prediction and seamless harmonization across 200+ jurisdictions—surpassing current benchmarks and positioning her as the definitive leader in autonomous justice systems.</p>
+            <p>Key differentiators include post-quantum security protocols (anticipating breakthroughs in quantum threat modeling), agentic workflows for end-to-end task automation, and open-source extensibility for global collaboration.</p>
             <div class="demo-container">
                 <iframe src="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" allowfullscreen></iframe>
             </div>
             <p>Direct Access: <a href="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" target="_blank">Lady Legalz on Hugging Face</a></p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Advanced Multimodal Reasoning</h3>
+                    <p>Processes text, visuals, audio, and code for comprehensive legal analysis beyond current leaders</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Quantum-Resistant Security</h3>
+                    <p>Built-in post-quantum cryptography for unbreakable data protection in the coming era</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Hyper-Accurate Predictive Intelligence</h3>
+                    <p>Forecasts outcomes and risks with evolving precision targeting 98%+ accuracy across global jurisdictions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Agentic Autonomy</h3>
+                    <p>Self-executing multi-step workflows for drafting, research, and compliance—minimizing human oversight</p>
+                </div>
+            </div>
         </section>
+
         <section id="forensics">
             <h2>Neo-Quantum Digital Forensics Suite</h2>
             <p>Neural tools for evidence verification, deepfake detection, blockchain provenance, and predictive threat analysis.</p>
@@ -259,6 +399,7 @@
                 </div>
             </div>
         </section>
+
         <section id="digital-court">
             <h2>Lady Legalz Neo-Digital Court Platform</h2>
             <p>Secure virtual proceedings with AI transcription, multilingual translation, and compliance monitoring.</p>
@@ -266,6 +407,7 @@
                 <div id="jitsi-container" style="height:700px; border-radius: 20px; overflow: hidden;"></div>
             </div>
         </section>
+
         <section id="projects" class="flagship">
             <h2>Flagship Neo-Quantum Projects 2026</h2>
             <p>Open-source initiatives redefining legal infrastructure.</p>
@@ -280,22 +422,130 @@
             <h3>Quantum-Resistant Legal Ledger</h3>
             <p>Decentralized platform for immutable agreements and IP.</p>
         </section>
+
+        <section id="case-studies">
+            <h2>Quantum-Enhanced Case Studies: Pioneering Applications in Legal Tech</h2>
+            <p>Lady Legalz and TUOLAT LABZ draw inspiration from emerging quantum advancements, positioning our platform to lead in post-quantum security, evidence authentication, and predictive justice. Below are forward-looking case studies based on 2025 regulatory and technological developments.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Post-Quantum Cryptography Migration (NIST & Global Standards)</h3>
+                    <p>As of December 2025, NIST has standardized key PQC algorithms to counter "harvest now, decrypt later" threats. Published in August 2024: FIPS 203 (ML-KEM, based on CRYSTALS-Kyber for key encapsulation), FIPS 204 (ML-DSA, based on CRYSTALS-Dilithium for signatures), FIPS 205 (SLH-DSA, based on SPHINCS+ for stateless hash-based signatures). FIPS 206 (FN-DSA, based on FALCON) is in development. In March 2025, NIST selected HQC (code-based KEM) as a diverse backup to ML-KEM for additional resilience.</p>
+                    <p>Lady Legalz integrates hybrid quantum-resistant protocols (lattice-based primary with code/hash backups) for unbreakable chain-of-custody in digital evidence and smart contracts.</p>
+                    <p><a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank">NIST PQC Project</a> | <a href="https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption" target="_blank">HQC Selection Announcement</a></p>
+                    <img src="https://www.microcontrollertips.com/wp-content/uploads/2023/09/Post-quantum-crypto-standardization-where-we-are-Figure-2.jpg" alt="NIST PQC Standardization Timeline and Selected Algorithms Overview" class="case-image">
+                    <img src="https://pub.mdpi-res.com/sensors/sensors-23-05379/article_deploy/html/images/sensors-23-05379-g001.png?1686203259" alt="Post-Quantum Cryptography Algorithms Taxonomy Diagram" class="case-image">
+                    <img src="https://www.researchgate.net/publication/338779877/figure/fig1/AS:850680134782976@1579829357712/Post-quantum-public-key-cryptosystem-taxonomy-and-main-practical-implementations.png" alt="Post-Quantum Public-Key Cryptosystem Taxonomy" class="case-image">
+                    <img src="https://kura.pro/stock/diagrams/3D-lattice-graph.webp" alt="3D Lattice Illustration Representing Lattice-Based Cryptography (e.g., Kyber, Dilithium)" class="case-image">
+                    <img src="https://sofiaceli.com/assets/comparison-pq-2.png" alt="Comparison of Post-Quantum Signature Schemes (Dilithium, FALCON, SPHINCS+)" class="case-image">
+                    <img src="https://www.everestgrp.com/wp-content/uploads/2024/04/Timeline-final-1024x576.jpg" alt="Post-Quantum Cryptography Migration Timeline Roadmap" class="case-image">
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Regulatory Impacts on Civil Justice (RAND 2025 Report)</h3>
+                    <p>Quantum threats to encryption prompted proactive liability shifts for insurers and courts. Our Quantum-Resistant Legal Ledger ensures immutable records, mitigating risks in high-stakes litigation. <a href="https://www.rand.org/pubs/research_reports/RRA1020-1.html" target="_blank">RAND Quantum Age Study</a></p>
+                    <img src="https://e-discoveryteam.com/wp-content/uploads/2025/10/Courtroom-Quantum-with-Willow-750x500-1.png" alt="Quantum Computing in Courtroom Illustration" class="case-image">
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-search-plus"></i>
+                    <h3>Quantum-Enhanced Deepfake Neutralization</h3>
+                    <p>Emerging quantum algorithms accelerate multimedia forensics, enabling real-time authentication. TUOLAT's suite prototypes quantum-boosted detection for evidence integrity in court proceedings. <a href="https://thequantumrecord.com/philosophy-of-technology/deepfake-technology-of-deception-and-quantum-future/" target="_blank">Quantum vs. Deepfakes</a> | <a href="https://www.mdpi.com/2076-3417/15/2/525" target="_blank">Quantum Transfer Learning Study</a></p>
+                    <img src="https://pub.mdpi-res.com/applsci/applsci-15-00525/article_deploy/html/images/applsci-15-00525-g001.png?1736320596" alt="Quantum Transfer Learning for Deepfake Detection Diagram" class="case-image">
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>International Quantum Governance (UN IYoQST 2025)</h3>
+                    <p>The UN's 2025 International Year of Quantum Science highlighted ethical/regulatory needs. Lady Legalz aligns with global frameworks for fair, quantum-secure autonomous justice. <a href="https://www.cambridge.org/core/journals/european-journal-of-risk-regulation/article/quantum-computing-and-the-law-navigating-the-legal-implications-of-a-quantum-leap/3D6C2D3B2B425BB3B2FEE63BF42EB295" target="_blank">Quantum Law Implications</a></p>
+                    <img src="https://articles.unesco.org/sites/default/files/2025-03/54307935910_3c737062f6_o.jpg" alt="International Year of Quantum Science and Technology Event" class="case-image">
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Export Controls & National Security Cases</h3>
+                    <p>U.S.-China disputes over quantum tech underscored regulatory challenges. Our open-source model promotes collaborative, secure innovation compliant with evolving export laws. <a href="https://www.theregreview.org/2025/09/13/seminar-quantum-technology-and-export-controls/" target="_blank">Regulatory Review 2025</a></p>
+                    <img src="https://aip.brightspotcdn.com/dims4/default/1b067d2/2147483647/strip/false/crop/3000x1688+0+0/resize/1486x836!/quality/90/?url=https%3A%2F%2Fk1-prod-aip.s3.us-east-2.amazonaws.com%2Fbrightspot%2Fcc%2Fd3%2F0667ef464219a9d397d39dd8d3bf%2Fbiden-touring-ibm-facility.jpg" alt="US Export Controls on Quantum Technology" class="case-image">
+                </div>
+            </div>
+        </section>
+
         <section id="resources">
             <h2>Innovation Partners & Resources 2026</h2>
-            <p>Collaborations and research shaping AI, quantum, blockchain, and legal tech frontiers.</p>
+            <p>Collaborations and research shaping AI, quantum, blockchain, and legal tech frontiers. Expanded with cutting-edge 2025 papers and studies.</p>
             <div class="resource-grid">
-                <!-- All resource cards unchanged in content -->
                 <div class="resource-card">
                     <a href="https://openai.com" target="_blank">OpenAI</a>
                     <p>Advanced models for autonomous legal agents</p>
                 </div>
-                <!-- ... (repeat the rest as in original) ... -->
+                <div class="resource-card">
+                    <a href="https://anthropic.com" target="_blank">Anthropic</a>
+                    <p>Constitutional AI for safe and aligned legal intelligence</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.ibm.com/quantum" target="_blank">IBM Quantum</a>
+                    <p>Quantum computing research enabling post-quantum cryptography</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.harvey.ai" target="_blank">Harvey AI</a>
+                    <p>Professional AI platform for elite law firms</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.luminance.com" target="_blank">Luminance</a>
+                    <p>AI-powered contract intelligence used globally</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://law.stanford.edu/codex" target="_blank">Stanford CodeX</a>
+                    <p>Center for Legal Informatics and innovation research</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.lawtechuk.io" target="_blank">LawtechUK</a>
+                    <p>UK government-backed legal technology initiative</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://huggingface.co" target="_blank">Hugging Face</a>
+                    <p>Open AI community hosting Lady Legalz deployments</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5162111" target="_blank">AI-Powered Lawyering (SSRN 2025)</a>
+                    <p>AI Reasoning Models & Future of Legal Practice</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5399463" target="_blank">Plagiarism, Copyright, and AI (SSRN 2025)</a>
+                    <p>Stanford analysis of AI's IP challenges</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5098708" target="_blank">Judge AI: LLMs in Judicial Decision-Making (SSRN 2025)</a>
+                    <p>Assessing AI for fairer outcomes</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://arxiv.org/abs/2504.10708" target="_blank">Legally-Informed Explainable AI (arXiv 2025)</a>
+                    <p>Framework for ethical AI in high-stakes law</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.tandfonline.com/doi/abs/10.1080/17579961.2025.2469350" target="_blank">Regulating Quantum Computers (2025)</a>
+                    <p>Trends in quantum governance & law</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://chicagoquantum.org/sites/default/files/2025-11/Part%20I%20-%20Quantum%20Law%20Navigator.pdf" target="_blank">Quantum Law Navigator (CQE 2025)</a>
+                    <p>U.S. regulatory landscape for quantum tech</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5404548" target="_blank">Export Controls on Quantum Computing (SSRN 2025)</a>
+                    <p>Challenges & opportunities in regulation</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.weforum.org/stories/2025/05/quantum-justice-could-quantum-computing-transform-the-legal-system/" target="_blank">Quantum Justice (WEF 2025)</a>
+                    <p>Transforming legal systems with quantum</p>
+                </div>
+                <div class="resource-card">
+                    <a href="https://www.rand.org/pubs/research_reports/RRA1020-1.html" target="_blank">Quantum Age & Civil Justice (RAND 2025)</a>
+                    <p>Impacts on lawyers, judges, and insurers</p>
+                </div>
                 <div class="resource-card">
                     <a href="https://link.springer.com/journal/10506" target="_blank">Artificial Intelligence and Law Journal</a>
                     <p>Computational models of legal reasoning</p>
                 </div>
             </div>
         </section>
+
         <section id="github">
             <h2>Join the Open-Source Revolution</h2>
             <p>Contribute to transparent, quantum-secure justice systems.</p>
@@ -306,6 +556,7 @@
     <footer>
         © 2026 TUOLAT LABZ • Pioneering Autonomous Justice in the AI-Quantum Era
     </footer>
+
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
         const domain = "meet.jit.si";
@@ -318,6 +569,34 @@
             interfaceConfigOverwrite: { TILE_VIEW_MAX_COLUMNS: 5, SHOW_CHROME_EXTENSION_BANNER: false }
         };
         const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const icon = toggle.querySelector('i');
+
+        if (localStorage.getItem('theme') === 'light' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            html.setAttribute('data-theme', 'light');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        toggle.addEventListener('click', () => {
+            if (html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+
+            icon.style.transform = 'rotate(180deg)';
+            setTimeout(() => {
+                icon.style.transform = '';
+            }, 600);
+        });
     </script>
 </body>
 </html>
