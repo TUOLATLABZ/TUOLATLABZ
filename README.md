@@ -40,12 +40,10 @@ We encourage contributions from TUOLAT students, faculty, alumni, and legal tech
 
 ## Current TUOLAT Projects
 
-|     Project Name            |      Description        | Tech Stack Status   |      Contributors     |
-|-----------------------------|-------------------------|----------------------------------------------
-| **Lady Legalz Beta 4**      |    NEO-INTELLIGENCE     | 🟢 Active           | 3 Students, 1 Faculty |
-| **Digital Court Prototype** |    TUOLAT MOCK COURT    | 🟡 Prototype Active | 1 Faculty             |
-| **Lady Legalz ContractGen** |    BETA 4               | 🟡 Prototype Active | 1 Faculty             |
-| **Lady Legalz Summary**     |    LEGAL TEXT ANALYSIS  | 🟡 Prototype Active | 1 Faculty             |
+**Lady Legalz Beta 4** - NEO-INTELLIGENCE- 🟢 Active - 3 Students, 1 Faculty 
+**Digital Court Prototype** - TUOLAT MOCK COURT - 🟡 Prototype Active - 1 Faculty             
+**Lady Legalz ContractGen** - BETA 4 - 🟡 Prototype Active - 1 Faculty             
+**Lady Legalz Summary** - LEGAL TEXT ANALYSIS - 🟡 Prototype Active - 1 Faculty             
 
 ### Featured Project: LADY LEGALZ BETA 4
 **What is Lady Legalz?**: LEGALITY OS.
