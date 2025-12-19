@@ -31,6 +31,52 @@
             --glow: 0 5px 15px rgba(0,85,255,0.2);
         }
 
+        /* PRE-LOADER STYLES */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #0a001f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+        .loader-logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: var(--glow);
+            animation: pulse-glow 2s infinite;
+        }
+        .loader-bar-container {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .loader-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            box-shadow: var(--glow);
+            animation: load 2.5s ease-in-out forwards;
+        }
+        .loader-text {
+            margin-top: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
+        @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
         * {margin:0; padding:0; box-sizing:border-box;}
         html { scroll-behavior: smooth; }
         body {
@@ -41,6 +87,21 @@
             display:flex; 
             flex-direction:column; 
             transition: background 0.4s, color 0.4s;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('dashboard-preview.png') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.15; 
+            z-index: -1;
+            pointer-events: none;
         }
 
         header {
@@ -56,7 +117,6 @@
         .first-badge {font-size:1.5rem; background:linear-gradient(45deg,var(--accent),var(--neon)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:bold;}
         .tagline {font-size:1.4rem; max-width:1000px; margin:0 auto 20px; opacity:0.95;}
 
-        /* Ticker Animation */
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -102,6 +162,12 @@
     </style>
 </head>
 <body>
+    <div id="preloader">
+        <div class="loader-logo">LADY LEGALZ</div>
+        <div class="loader-bar-container"><div class="loader-bar"></div></div>
+        <div class="loader-text">SYNCING WITH NEURAL HUB...</div>
+    </div>
+
     <div class="theme-toggle" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></div>
 
     <header>
@@ -148,7 +214,7 @@
             <h2>Legal Innovation in 2025</h2>
             <p>Pushing judicial limits with <strong>AI & The Law</strong>. The judicial system revamped for the digital age.</p>
             <div style="text-align: center; margin-bottom: 30px;">
-                <img src="dashboard-preview.png.png" alt="Lady Legalz Dashboard" 
+                <img src="dashboard-preview.png" alt="Lady Legalz Dashboard" 
                      style="width: 100%; border-radius: 15px; border: 2px solid var(--accent); box-shadow: var(--glow);">
             </div>
             <div class="video">
@@ -226,22 +292,22 @@
             <p style="text-align:center;">Analyzing the real-world impact of automated justice and ethical AI integration.</p>
             <div class="grid">
                 <div class="card">
-                    <div class="video"><iframe src="https://www.youtube.com/watch?v=JQuVZQow6ck" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen loading="lazy"></iframe></div>
                     <h3>Case Study: 01</h3>
                     <p>AI Precedent Mapping</p>
                 </div>
                 <div class="card">
-                    <div class="video"><iframe src="https://www.youtube.com/watch?v=ZMsSc_utZ40" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="video"><iframe src="https://www.youtube.com/embed/ZMsSc_utZ40" allowfullscreen loading="lazy"></iframe></div>
                     <h3>Case Study: 02</h3>
                     <p>Predictive Sentencing Bias</p>
                 </div>
                 <div class="card">
-                    <div class="video"><iframe src="https://www.youtube.com/watch?v=I7OdEfGOX7k" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen loading="lazy"></iframe></div>
                     <h3>Case Study: 03</h3>
                     <p>Quantum Evidence Verification</p>
                 </div>
                 <div class="card">
-                    <div class="video"><iframe src="https://www.youtube.com/shorts/GNZcMvI7NSM" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen loading="lazy"></iframe></div>
                     <h3>Case Study: 04</h3>
                     <p>Neo-Intelligence Outcomes</p>
                 </div>
@@ -272,6 +338,15 @@
 
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
+        // PRELOADER HANDLER
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 800);
+            }, 2500); // Duration matches animation
+        });
+
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
                 new JitsiMeetExternalAPI("meet.jit.si", {
