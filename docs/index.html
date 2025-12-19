@@ -33,6 +33,43 @@
             --panel-bg: rgba(255, 255, 255, 0.9);
         }
 
+        /* GLITCH ANIMATION */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: transparent;
+            clip: rect(0, 0, 0, 0);
+        }
+        .glitch:hover::before, .glitch-active::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch:hover::after, .glitch-active::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            5% { clip: rect(70px, 9999px, 71px, 0); }
+            10% { clip: rect(29px, 9999px, 83px, 0); }
+            100% { clip: rect(29px, 9999px, 83px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            5% { clip: rect(10px, 9999px, 15px, 0); }
+            10% { clip: rect(2px, 9999px, 40px, 0); }
+            100% { clip: rect(2px, 9999px, 40px, 0); }
+        }
+
         /* UI POLISH: SCANLINE OVERLAY */
         body::after {
             content: " ";
@@ -80,6 +117,43 @@
         }
         .log-entry { color: var(--accent); margin-bottom: 4px; opacity: 0.8; }
         .log-entry span { color: #fff; opacity: 0.5; margin-right: 10px; }
+
+        /* SYSTEM STATUS CHART STYLING */
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 150px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .bar {
+            flex: 1;
+            background: var(--accent);
+            box-shadow: var(--glow);
+            transition: height 0.5s ease;
+            position: relative;
+        }
+        .bar::before {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            font-family: 'Orbitron';
+            color: var(--accent);
+        }
+
+        /* NEURAL CANVAS STYLING */
+        #neural-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none; opacity: 0.3;
+        }
 
         /* FLOATING ANIMATION */
         @keyframes float {
@@ -167,6 +241,7 @@
             box-shadow: var(--glow);
             position: relative;
             animation: float 6s ease-in-out infinite;
+            overflow: hidden;
         }
         
         section:nth-child(even) { animation-delay: 1s; animation-duration: 7s; }
@@ -175,12 +250,12 @@
             content: ""; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);
         }
         
-        h2 {font-family:'Orbitron',sans-serif; color:var(--accent); font-size:1.8rem; text-align:left; margin-bottom:30px; border-left: 4px solid var(--accent); padding-left: 15px;}
+        h2 {font-family:'Orbitron',sans-serif; color:var(--accent); font-size:1.8rem; text-align:left; margin-bottom:30px; border-left: 4px solid var(--accent); padding-left: 15px; position: relative; z-index: 1;}
 
         .video {position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border: 1px solid var(--border); border-radius:4px; margin:30px 0;}
         .video iframe {position:absolute; top:0; left:0; width:100%; height:100%; border:none;}
 
-        .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:35px;}
+        .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:35px; position: relative; z-index: 1;}
         
         .card {
             background: rgba(0, 20, 40, 0.6); padding: 25px; border-radius: 5px; 
@@ -221,7 +296,7 @@
 
     <header>
         <p class="first-badge">BETA 4 | NEO-INTELLIGENCE</p>
-        <h1>LADY LEGALZ</h1>
+        <h1 id="main-title" class="glitch" data-text="LADY LEGALZ">LADY LEGALZ</h1>
         <p class="tagline">TUOLAT LABZ 2026</p>
 
         <div style="margin-top: 35px; background: rgba(0, 20, 30, 0.8); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 12px 0; max-width: 1000px; margin-left: auto; margin-right: auto; box-shadow: var(--glow);">
@@ -275,6 +350,7 @@
         </section>
 
         <section id="neural-hub">
+            <canvas id="neural-canvas"></canvas> 
             <h2>NEO-INTELLIGENCE</h2>
             <div class="grid">
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">HF_INFERENCE</h3><p style="font-size: 0.9rem; opacity: 0.7;">Model: OLMO-3-7B-INSTRUCT</p></div>
@@ -282,6 +358,14 @@
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">LL_BETA_v4.0.0</h3><p style="font-size: 0.9rem; opacity: 0.7;">TUOLAT DATABASE SYNC: 100%</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">COURTLISTENER</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 100%</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">GROK API</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 100%</p></div>
+            </div>
+
+            <div class="chart-container" style="position: relative; z-index: 1;">
+                <div class="bar" style="height: 80%;" data-label="CPU" id="bar-cpu"></div>
+                <div class="bar" style="height: 60%;" data-label="NEURAL" id="bar-neural"></div>
+                <div class="bar" style="height: 90%;" data-label="LATENCY" id="bar-latency"></div>
+                <div class="bar" style="height: 40%;" data-label="NODES" id="bar-nodes"></div>
+                <div class="bar" style="height: 70%;" data-label="SYNC" id="bar-sync"></div>
             </div>
         </section>
 
@@ -349,25 +433,29 @@
 
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playCyberSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        }
+
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 800); }, 2500);
         });
 
-        // DATA FEED SCRIPT
         const logsContainer = document.getElementById('data-feed-logs');
-        const logMessages = [
-            "BOOTING NEO-INTELLIGENCE CORE...",
-            "SYNCING WITH COURT LISTENER API...",
-            "ANALYZING 2025 CASE PRECEDENTS...",
-            "DEEPFAKE DETECTION: ACTIVE",
-            "REASONING TUNNEL ESTABLISHED.",
-            "LL_BETA_v4.0.0 STATUS: OPTIMAL",
-            "INGESTING NEW DATASET: TUOLAT_ARCHIVE_09",
-            "CONSTRUCTING DIGITAL MOCK COURT NODES...",
-            "LEGAL LEXICON SYNC COMPLETE.",
-            "PREDICTIVE JUSTICE ALGORITHM LOADED."
-        ];
+        const logMessages = ["BOOTING NEO-INTELLIGENCE CORE...", "SYNCING WITH COURT LISTENER API...", "ANALYZING 2025 CASE PRECEDENTS...", "DEEPFAKE DETECTION: ACTIVE", "REASONING TUNNEL ESTABLISHED.", "LL_BETA_v4.0.0 STATUS: OPTIMAL", "INGESTING NEW DATASET: TUOLAT_ARCHIVE_09", "CONSTRUCTING DIGITAL MOCK COURT NODES...", "LEGAL LEXICON SYNC COMPLETE.", "PREDICTIVE JUSTICE ALGORITHM LOADED."];
 
         function addLog() {
             const time = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -379,7 +467,65 @@
             if (logsContainer.children.length > 5) logsContainer.lastChild.remove();
         }
         setInterval(addLog, 3000);
-        addLog(); // Start immediately
+        addLog();
+
+        function updateChart() {
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                const randomHeight = Math.floor(Math.random() * 70) + 20;
+                bar.style.height = randomHeight + '%';
+            });
+        }
+        setInterval(updateChart, 2000);
+
+        // GLITCH SCRIPT
+        const title = document.getElementById('main-title');
+        setInterval(() => {
+            title.classList.add('glitch-active');
+            setTimeout(() => title.classList.remove('glitch-active'), 150);
+        }, 4000);
+
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() {
+            const parent = canvas.parentElement;
+            canvas.width = parent.offsetWidth;
+            canvas.height = parent.offsetHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+        for (let i = 0; i < 40; i++) particles.push(new Particle());
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#00ffff'; ctx.lineWidth = 0.5;
+            particles.forEach((p, i) => {
+                p.update();
+                for (let j = i + 1; j < particles.length; j++) {
+                    const d = Math.hypot(p.x - particles[j].x, p.y - particles[j].y);
+                    if (d < 100) {
+                        ctx.globalAlpha = 1 - d / 100;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
 
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
@@ -395,8 +541,8 @@
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const icon = toggle.querySelector('i');
-        
         toggle.addEventListener('click', () => {
+            playCyberSound();
             const current = html.getAttribute('data-theme');
             const target = current === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', target);
@@ -404,7 +550,8 @@
         });
 
         function openPreview(n) {
-            const texts = {1:"LADY LEGALZ BETA 4", 2:"CONTRACTGEN", 3:"SUMMARY", 4:"FORENSICS", 5:"LADY LEGALZ BETA 4", 6:"CONTRACTGEN", 7:"SUMMARY", 8:"FORENSICS" };
+            playCyberSound();
+            const texts = {1:"TUOLAT LL_BETA_v4.1.1", 2:"NEGOTIATION SYNC", 3:"RISK AND CERT ODDS", 4:"CASE CLIENT", 5:"LEXICON BETA 1", 6:"OPPOSITION SIM", 7:"ARCHIVES", 8:"DATA INGESTION" };
             document.getElementById('preview-body').innerHTML = `<h3>${texts[n]}</h3><p>COMING SOON 2026!</p>`;
             document.getElementById('preview-modal').classList.add('active');
         }
