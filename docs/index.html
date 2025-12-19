@@ -273,7 +273,7 @@
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen></iframe></div><h3>Study: 01</h3></div>
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen></iframe></div><h3>Study: 02</h3></div>
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen></iframe></div><h3>Study: 03</h3></div>
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
+                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/v=I7OdEfGOX7k&t=30s" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
             </div>
         </section>
 
@@ -284,10 +284,10 @@
                 <div class="card" onclick="openPreview(2)" style="cursor:pointer;"><h3>NEGOTIATION SYNC</h3></div>
                 <div class="card" onclick="openPreview(3)" style="cursor:pointer;"><h3>RISK AND CERT ODDS </h3></div>
                 <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>CASE CLIENT</h3></div>
-                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>LEXICON BETA 1</h3></div>
-                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>OPPOSITION SIM</h3></div>
-                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>ARCHIVES</h3></div>
-                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>DATA INGESTION</h3></div>
+                <div class="card" onclick="openPreview(5)" style="cursor:pointer;"><h3>LEXICON BETA 1</h3></div>
+                <div class="card" onclick="openPreview(6)" style="cursor:pointer;"><h3>OPPOSITION SIM</h3></div>
+                <div class="card" onclick="openPreview(7)" style="cursor:pointer;"><h3>ARCHIVES</h3></div>
+                <div class="card" onclick="openPreview(8)" style="cursor:pointer;"><h3>DATA INGESTION</h3></div>
             </div>
         </section>
     </main>
@@ -333,7 +333,7 @@
         });
 
         function openPreview(n) {
-            const texts = {1:"LADY LEGALZ BETA 4", 2:"CONTRACTGEN", 3:"SUMMARY", 4:"FORENSICS"};
+            const texts = {1:"LADY LEGALZ BETA 4", 2:"CONTRACTGEN", 3:"SUMMARY", 4:"FORENSICS", 5:"LADY LEGALZ BETA 4", 6:"CONTRACTGEN", 7:"SUMMARY", 8:"FORENSICS" };
             document.getElementById('preview-body').innerHTML = `<h3>${texts[n]}</h3><p>COMING SOON 2026!</p>`;
             document.getElementById('preview-modal').classList.add('active');
         }
