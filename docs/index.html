@@ -20,7 +20,6 @@
             --glow: 0 0 25px rgba(0,255,255,0.7);
         }
 
-        /* FIXED LIGHT MODE: Darker text and solid backgrounds for readability */
         [data-theme="light"] {
             --bg: #f4f7ff; 
             --card: #ffffff; 
@@ -32,6 +31,7 @@
         }
 
         * {margin:0; padding:0; box-sizing:border-box;}
+        html { scroll-behavior: smooth; }
         body {
             font-family:'Inter',sans-serif; 
             background:var(--bg); 
@@ -54,6 +54,12 @@
         h1 {font-family:'Orbitron',sans-serif; font-size:4rem; color:var(--accent); text-shadow:var(--glow); letter-spacing:5px; margin-bottom:15px;}
         .first-badge {font-size:1.5rem; background:linear-gradient(45deg,var(--accent),var(--neon)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:bold;}
         .tagline {font-size:1.4rem; max-width:1000px; margin:0 auto 20px; opacity:0.95;}
+
+        /* Ticker Animation */
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
         nav {background:rgba(10,0,31,0.95); backdrop-filter:blur(15px); padding:18px 0; position:sticky; top:0; z-index:100; box-shadow:0 5px 20px rgba(0,0,0,0.4);}
         [data-theme="light"] nav { background: #fff; border-bottom: 1px solid var(--border); }
@@ -101,6 +107,26 @@
         <h1>Lady Legalz</h1>
         <p class="first-badge">BETA 4 | NEO INTELLIGENCE</p>
         <p class="tagline">Legal Innovation from TUOLAT LABZ 2026.</p>
+
+        <div style="margin-top: 25px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 50px; overflow: hidden; padding: 10px 0; max-width: 900px; margin-left: auto; margin-right: auto; box-shadow: var(--glow);">
+            <div style="display: flex; white-space: nowrap; animation: ticker 30s linear infinite;">
+                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
+                    <i class="fas fa-bolt"></i> RECENT VERDICT: AI Evidence Admissibility Case #2025-08 - SUSTAINED
+                </span>
+                <span style="padding: 0 40px; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
+                    <i class="fas fa-gavel"></i> SUPREME COURT 2025: Lady Legalz Beta 4.0 Cited in Mock Trial Alpha
+                </span>
+                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
+                    <i class="fas fa-microchip"></i> SYSTEM UPDATE: Quantum Forensics Core Sync Complete
+                </span>
+                <span style="padding: 0 40px; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
+                    <i class="fas fa-balance-scale"></i> NEW PRECEDENT: Digital Asset Liability Simulation - 98.4% Accuracy
+                </span>
+                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
+                    <i class="fas fa-bolt"></i> RECENT VERDICT: AI Evidence Admissibility Case #2025-08 - SUSTAINED
+                </span>
+            </div>
+        </div>
     </header>
 
     <nav>
@@ -133,7 +159,7 @@
                 <iframe src="https://www.youtube.com/embed/S6kVwPYwb9Y" title="The Dawn of AI Judges" allowfullscreen loading="lazy"></iframe>
             </div>
             <iframe 
-                src="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" 
+                src="https://tuolatlabz-lady-legalz.hf.space" 
                 style="width:100%; height:650px; border:none; border-radius:18px; margin-top:35px;" 
                 loading="lazy" 
                 allowfullscreen 
@@ -190,6 +216,33 @@
             </div>
         </section>
 
+        <section id="studies">
+            <h2>Judicial AI Case Studies (2025)</h2>
+            <p style="text-align:center;">Analyzing the real-world impact of automated justice and ethical AI integration.</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/0W4t8F0t8bU" allowfullscreen loading="lazy"></iframe></div>
+                    <h3>Case Study: 01</h3>
+                    <p>AI Precedent Mapping</p>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/qS9CEdymWxI" allowfullscreen loading="lazy"></iframe></div>
+                    <h3>Case Study: 02</h3>
+                    <p>Predictive Sentencing Bias</p>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/3D4aQeKfgjI" allowfullscreen loading="lazy"></iframe></div>
+                    <h3>Case Study: 03</h3>
+                    <p>Quantum Evidence Verification</p>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/5z3IRrUMQ6Q" allowfullscreen loading="lazy"></iframe></div>
+                    <h3>Case Study: 04</h3>
+                    <p>Neo-Intelligence Outcomes</p>
+                </div>
+            </div>
+        </section>
+
         <section id="research">
             <h2>Legality Research</h2>
             <div class="grid">
@@ -214,7 +267,6 @@
 
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
-        // Jitsi Integration
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
                 new JitsiMeetExternalAPI("meet.jit.si", {
@@ -226,7 +278,6 @@
             }
         };
 
-        // Theme Toggle Logic
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const icon = toggle.querySelector('i');
@@ -243,12 +294,11 @@
             localStorage.setItem('theme', target);
         });
 
-        // Modal Logic
         const previews = {
-            1: "<h3>Lady Legalz Court Client (2026)</h3><p>LLM judicial reasoning.</p><a href='#' style='color:var(--accent)'>Read More</a>",
+            1: "<h3>Lady Legalz Court Client (2026)</h3><p>LLM judicial reasoning simulation.</p><a href='#' style='color:var(--accent)'>Read More</a>",
             2: "<h3>Ethical Framework</h3><p>Safety protocols and bias mitigation strategies.</p><a href='#' style='color:var(--accent)'>Read More</a>",
-            3: "<h3>Legality Requirements</h3><p>Meeting all 10 judicial requirements before 2026.</p><a href='#' style='color:var(--accent)'>Read More</a>",
-            4: "<h3>Digital Justice</h3><p>The vision for automated legal systems.</p><a href='#' style='color:var(--accent)'>Read More</a>"
+            3: "<h3>Legality Requirements</h3><p>Meeting all 10 judicial requirements for AI adoption.</p><a href='#' style='color:var(--accent)'>Read More</a>",
+            4: "<h3>Digital Justice</h3><p>The vision for automated legal systems and PQC ledgers.</p><a href='#' style='color:var(--accent)'>Read More</a>"
         };
 
         function openPreview(n) {
