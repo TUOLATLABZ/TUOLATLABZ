@@ -12,23 +12,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --bg: #0a001f; 
-            --card: rgba(15,5,35,0.85); 
+            --bg: #030008; 
+            --card: rgba(10, 10, 25, 0.7); 
             --accent: #00ffff; 
             --neon: #8b5cf6; 
-            --text: #e6e6ff; 
-            --border: rgba(0,255,255,0.5); 
-            --glow: 0 0 25px rgba(0,255,255,0.7);
+            --text: #ffffff; 
+            --border: rgba(0, 255, 255, 0.6); 
+            --glow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.2);
+            --panel-bg: rgba(0, 10, 20, 0.85);
         }
 
         [data-theme="light"] {
             --bg: #f4f7ff; 
-            --card: #ffffff; 
+            --card: rgba(255, 255, 255, 0.9); 
             --accent: #0055ff; 
             --neon: #6d28d9; 
             --text: #0a0a1a; 
-            --border: rgba(0,85,255,0.3); 
-            --glow: 0 5px 15px rgba(0,85,255,0.2);
+            --border: rgba(0, 85, 255, 0.4); 
+            --glow: 0 5px 15px rgba(0, 85, 255, 0.2);
         }
 
         /* PRE-LOADER STYLES */
@@ -36,7 +37,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: #0a001f;
+            background: #030008;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -47,14 +48,14 @@
         .loader-logo {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent);
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             text-shadow: var(--glow);
             animation: pulse-glow 2s infinite;
         }
         .loader-bar-container {
             width: 300px;
-            height: 4px;
+            height: 2px;
             background: rgba(0, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -70,12 +71,12 @@
             margin-top: 15px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: var(--text);
-            opacity: 0.7;
+            letter-spacing: 4px;
+            color: var(--accent);
+            opacity: 0.8;
         }
         @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
-        @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes pulse-glow { 0%, 100% { opacity: 1; text-shadow: var(--glow); } 50% { opacity: 0.4; text-shadow: none; } }
 
         * {margin:0; padding:0; box-sizing:border-box;}
         html { scroll-behavior: smooth; }
@@ -88,8 +89,10 @@
             flex-direction:column; 
             transition: background 0.4s, color 0.4s;
             position: relative;
+            overflow-x: hidden;
         }
 
+        /* SYNC WITH PNG INTERFACE BACKGROUND */
         body::before {
             content: "";
             position: fixed;
@@ -97,100 +100,117 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('dashboard-preview.png') no-repeat center center fixed;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%), 
+                        url('dashboard-preview.png') no-repeat center center fixed;
             background-size: cover;
-            opacity: 0.15; 
+            opacity: 0.4; 
             z-index: -1;
             pointer-events: none;
         }
 
         header {
-            background: rgba(10,0,31,0.9); 
-            backdrop-filter: blur(15px); 
+            background: rgba(0, 5, 15, 0.9); 
+            backdrop-filter: blur(20px); 
             text-align: center; 
-            padding: 80px 20px; 
-            border-bottom: 3px solid var(--accent);
+            padding: 60px 20px; 
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         [data-theme="light"] header { background: #fff; }
 
-        h1 {font-family:'Orbitron',sans-serif; font-size:4rem; color:var(--accent); text-shadow:var(--glow); letter-spacing:5px; margin-bottom:15px;}
-        .first-badge {font-size:1.5rem; background:linear-gradient(45deg,var(--accent),var(--neon)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:bold;}
-        .tagline {font-size:1.4rem; max-width:1000px; margin:0 auto 20px; opacity:0.95;}
+        h1 {font-family:'Orbitron',sans-serif; font-size:4.5rem; color:var(--accent); text-shadow: var(--glow); letter-spacing:8px; margin-bottom:15px; text-transform: uppercase;}
+        .first-badge {font-size:1.2rem; font-family: 'Orbitron'; letter-spacing: 3px; color: var(--neon); font-weight:bold; margin-bottom: 10px;}
+        .tagline {font-size:1.1rem; max-width:1000px; margin:0 auto 20px; opacity:0.8; font-family: 'Exo 2';}
 
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        nav {background:rgba(10,0,31,0.95); backdrop-filter:blur(15px); padding:18px 0; position:sticky; top:0; z-index:100; box-shadow:0 5px 20px rgba(0,0,0,0.4);}
-        [data-theme="light"] nav { background: #fff; border-bottom: 1px solid var(--border); }
+        nav {background:rgba(0,0,0,0.9); backdrop-filter:blur(15px); padding:15px 0; position:sticky; top:0; z-index:100; border-bottom: 1px solid var(--border);}
+        nav ul {display:flex; justify-content:center; flex-wrap:wrap; gap:20px; list-style:none;}
+        nav a {color:var(--text); padding:8px 18px; border-radius:4px; border: 1px solid transparent; text-decoration:none; font-family: 'Orbitron'; font-size: 0.8rem; transition:all 0.3s;}
+        nav a:hover {border-color: var(--accent); color:var(--accent); text-shadow: var(--glow);}
 
-        nav ul {display:flex; justify-content:center; flex-wrap:wrap; gap:15px; list-style:none;}
-        nav a {color:var(--text); padding:10px 20px; border-radius:50px; border:2px solid var(--border); text-decoration:none; font-weight:bold; transition:all 0.3s;}
-        nav a:hover {background:var(--accent); color:#000; transform:scale(1.05); box-shadow:var(--glow);}
+        main {flex:1; max-width:1300px; margin:40px auto; padding:0 20px;}
+        
+        /* SYNC WITH PNG CARD STYLE */
+        section {
+            background: var(--panel-bg); 
+            border-radius: 10px; 
+            padding: 40px; 
+            margin-bottom: 50px; 
+            border: 1px solid var(--border); 
+            backdrop-filter: blur(10px); 
+            box-shadow: var(--glow);
+            position: relative;
+        }
+        section::after {
+            content: ""; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);
+        }
+        h2 {font-family:'Orbitron',sans-serif; color:var(--accent); font-size:1.8rem; text-align:left; margin-bottom:30px; border-left: 4px solid var(--accent); padding-left: 15px;}
 
-        main {flex:1; max-width:1200px; margin:50px auto; padding:0 20px;}
-        section {background:var(--card); border-radius:22px; padding:45px; margin-bottom:60px; border:2px solid var(--border); backdrop-filter:blur(12px); box-shadow:0 12px 50px rgba(0,0,0,0.4);}
-        h2 {font-family:'Orbitron',sans-serif; color:var(--accent); font-size:2.2rem; text-align:center; margin-bottom:30px;}
-
-        .video {position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:18px; margin:30px 0;}
+        .video {position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border: 1px solid var(--border); border-radius:4px; margin:30px 0;}
         .video iframe {position:absolute; top:0; left:0; width:100%; height:100%; border:none;}
 
-        .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-top:35px;}
-        .card {background:rgba(20,10,50,0.7); padding:30px; border-radius:18px; border:2px solid var(--border); text-align:center; transition:all 0.4s; color:inherit; text-decoration:none;}
-        [data-theme="light"] .card { background: #fff; }
-        .card:hover {transform:translateY(-10px); box-shadow:var(--glow);}
-        .card i {font-size:3.2rem; color:var(--accent); margin-bottom:15px;}
+        .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:35px;}
+        
+        /* SYNC WITH PNG CARD BOXES */
+        .card {
+            background: rgba(0, 20, 40, 0.6); 
+            padding: 25px; 
+            border-radius: 5px; 
+            border: 1px solid rgba(0, 255, 255, 0.2); 
+            text-align: left; 
+            transition: all 0.3s;
+        }
+        .card:hover { border-color: var(--accent); background: rgba(0, 255, 255, 0.05); box-shadow: var(--glow); }
+        .card i {font-size:2.5rem; color:var(--accent); margin-bottom:15px; display: block;}
+        .card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 10px; color: var(--accent); }
 
-        .btn {display:inline-block; padding:18px 40px; background:linear-gradient(45deg,var(--accent),var(--neon)); color:#000; border-radius:60px; font-weight:bold; text-decoration:none; margin:30px auto; display:block; max-width:320px; text-align:center; font-size:1.2rem; border:none; cursor:pointer;}
+        .btn {display:inline-block; padding:15px 35px; background: transparent; color:var(--accent); border: 1px solid var(--accent); border-radius:2px; font-family: 'Orbitron'; font-weight:bold; text-decoration:none; margin:30px auto; display:block; max-width:280px; text-align:center; transition: all 0.3s;}
+        .btn:hover { background: var(--accent); color: #000; box-shadow: var(--glow); }
 
-        footer {text-align:center; padding:60px; background:rgba(0,0,0,0.9); border-top:2px solid var(--accent); color: #fff;}
+        footer {text-align:center; padding:40px; background:rgba(0,0,0,0.95); border-top:1px solid var(--border); font-family: 'Orbitron'; font-size: 0.8rem; color: var(--accent); letter-spacing: 2px;}
 
-        .theme-toggle {position:fixed; top:20px; right:20px; background:rgba(0,0,0,0.6); border:2px solid var(--border); border-radius:50%; width:55px; height:55px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.6rem; color:var(--accent); z-index:200;}
-        [data-theme="light"] .theme-toggle { background: #fff; }
+        .theme-toggle {position:fixed; top:20px; right:20px; background:rgba(0,0,0,0.8); border:1px solid var(--border); border-radius:4px; width:45px; height:45px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--accent); z-index:200;}
 
-        .modal {display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:300; justify-content:center; align-items:center; padding:20px;}
-        .modal.active {display:flex;}
-        .modal-content {max-width:800px; width:100%; background:var(--card); border-radius:22px; padding:40px; position:relative; color: var(--text); border: 1px solid var(--border);}
-        .close {position:absolute; top:20px; right:30px; font-size:2.5rem; color:var(--accent); cursor:pointer;}
+        .status-pill {display:inline-flex; align-items:center; gap:8px; padding:5px 12px; background:rgba(0, 255, 255, 0.05); border:1px solid var(--border); border-radius:4px; font-family:'Orbitron'; font-size:0.7rem; color: var(--accent);}
+        .status-dot {width:8px; height:8px; border-radius:50%; background:#00ff00; box-shadow:0 0 10px #00ff00; animation:pulse 2s infinite;}
 
-        .status-pill {display:inline-flex; align-items:center; gap:10px; padding:8px 15px; background:rgba(0, 255, 255, 0.1); border:1px solid var(--border); border-radius:8px; font-family:'Orbitron'; font-size:0.8rem;}
-        .status-dot {width:10px; height:10px; border-radius:50%; background:#00ff00; box-shadow:0 0 10px #00ff00; animation:pulse 2s infinite;}
-        @keyframes pulse { 0%, 100% {opacity:1;} 50% {opacity:0.4;} }
-
-        @media (max-width:768px){ h1{font-size:2.5rem;} .tagline{font-size:1.1rem;} section{padding:25px;} }
+        @media (max-width:768px){ h1{font-size:2.2rem; letter-spacing: 4px;} .tagline{font-size:0.9rem;} section{padding:20px;} }
     </style>
 </head>
 <body>
     <div id="preloader">
-        <div class="loader-logo">LADY LEGALZ</div>
+        <div class="loader-logo">LADY LEGALZ BETA 4</div>
         <div class="loader-bar-container"><div class="loader-bar"></div></div>
-        <div class="loader-text">SYNCING WITH NEURAL HUB...</div>
+        <div class="loader-text">INITIALIZING INTERFACE...NEO-INTELLIGENCE</div>
     </div>
 
     <div class="theme-toggle" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></div>
 
     <header>
-        <h1>Lady Legalz</h1>
         <p class="first-badge">BETA 4 | NEO INTELLIGENCE</p>
+        <h1>Lady Legalz</h1>
         <p class="tagline">Legal Innovation from TUOLAT LABZ 2026.</p>
 
-        <div style="margin-top: 25px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 50px; overflow: hidden; padding: 10px 0; max-width: 900px; margin-left: auto; margin-right: auto; box-shadow: var(--glow);">
-            <div style="display: flex; white-space: nowrap; animation: ticker 30s linear infinite;">
-                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
-                    <i class="fas fa-bolt"></i> RECENT VERDICT: AI Evidence Admissibility Case #2025-08 - SUSTAINED
+        <div style="margin-top: 35px; background: rgba(0, 20, 30, 0.8); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 12px 0; max-width: 1000px; margin-left: auto; margin-right: auto; box-shadow: var(--glow);">
+            <div style="display: flex; white-space: nowrap; animation: ticker 40s linear infinite;">
+                <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-bolt"></i> Doe v. Dynamic Physical Therapy (Dec 2025): Reversed a ruling that state-granted immunity barred federal claims, finding states can't shield providers from federal liability during emergencies
                 </span>
-                <span style="padding: 0 40px; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
-                    <i class="fas fa-gavel"></i> SUPREME COURT 2025: Lady Legalz Beta 4.0 Cited in Mock Trial Alpha
+                <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-gavel"></i> Pitts v. Mississippi (Nov 2025): Ruled that a defendant's Sixth Amendment right to confront accusers requires case-specific necessity findings to screen child witnesses, not just state law.
                 </span>
-                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
-                    <i class="fas fa-microchip"></i> SYSTEM UPDATE: Quantum Forensics Core Sync Complete
+                <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-microchip"></i> Clark v. Sweeney (Nov 2025): Found a lower court abused its discretion by granting a new trial despite the "party presentation" principle (claims must be raised by parties).
                 </span>
-                <span style="padding: 0 40px; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
-                    <i class="fas fa-balance-scale"></i> NEW PRECEDENT: Digital Asset Liability Simulation - 98.4% Accuracy
+                <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-balance-scale"></i> Nationwide Injunctions: Limited single federal judges' power to issue nationwide injunctions against executive actions, shifting power more towards the presidency.
                 </span>
-                <span style="padding: 0 40px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.9rem;">
-                    <i class="fas fa-bolt"></i> RECENT VERDICT: AI Evidence Admissibility Case #2025-08 - SUSTAINED
+                <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-bolt"></i> United States v. Rahimi (June 2024): Upheld a federal law disarming domestic abusers, finding it constitutional as it doesn't violate the Second Amendment for those deemed a threat
                 </span>
             </div>
         </div>
@@ -198,65 +218,66 @@
 
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#bot">Lady Legalz Beta 4.0.0</a></li>
-            <li><a href="#forensics">Lady Legalz Forensics</a></li>
-            <li><a href="#court">Lady Legalz Digital Court</a></li>
-            <li><a href="#projects">Lady Legalz Projects</a></li>
-            <li><a href="#studies">Case-Studies</a></li>
-            <li><a href="#research">Legality Research</a></li>
-            <li><a href="https://github.com/TUOLATLABZ" target="_blank">GitHub</a></li>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#bot">LADY LEGALZ 4.0</a></li>
+            <li><a href="#forensics">FORENSICS</a></li>
+            <li><a href="#court">DIGITAL COURT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#studies">CASE-STUDIES</a></li>
+            <li><a href="#research">LEGALITY RESEARCH</a></li>
+            <li><a href="https://github.com/TUOLATLABZ" target="_blank">GITHUB</a></li>
         </ul>
     </nav>
 
     <main>
         <section id="home">
-            <h2>Legal Innovation in 2025</h2>
-            <p>Pushing judicial limits with <strong>AI & The Law</strong>. The judicial system revamped for the digital age.</p>
-            <div style="text-align: center; margin-bottom: 30px;">
+            <h2>System Overview</h2>
+            <p style="margin-bottom: 20px; opacity: 0.8;">Pushing judicial limits with <strong>AI & The Law</strong>. The judicial system revamped for the digital age.</p>
+            
+            <div style="text-align: center; margin-bottom: 40px; padding: 20px; border: 1px dashed var(--border); background: rgba(0,0,0,0.3);">
                 <img src="dashboard-preview.png" alt="Lady Legalz Dashboard" 
-                     style="width: 100%; border-radius: 15px; border: 2px solid var(--accent); box-shadow: var(--glow);">
+                     style="width: 100%; border-radius: 4px; border: 1px solid var(--accent); box-shadow: var(--glow);">
             </div>
+
             <div class="video">
                 <iframe src="https://www.youtube.com/embed/bRO39Gz2cv4" title="Legal Tech Implementation" allowfullscreen loading="lazy"></iframe>
             </div>
-            <a href="#bot" class="btn">AI and Digital Courts</a>
+            <a href="#bot" class="btn">ACCESS DIGITAL COURT</a>
         </section>
 
         <section id="bot">
-            <h2>AI & Judges</h2>
-            <p>Lady Legalz Beta 4 analyzes cases, cites precedents, simulates verdicts, and explains every decision – ethically aligned and quantum-safe.</p>
+            <h2>Neural Analysis Core</h2>
+            <p style="margin-bottom: 20px; opacity: 0.8;">Lady Legalz Beta 4 analyzes cases, cites precedents, and simulates verdicts using the Olmo-3-7B engine.</p>
             <div class="video">
                 <iframe src="https://www.youtube.com/embed/S6kVwPYwb9Y" title="The Dawn of AI Judges" allowfullscreen loading="lazy"></iframe>
             </div>
             <iframe 
                 src="https://tuolatlabz-lady-legalz.hf.space" 
-                style="width:100%; height:650px; border:none; border-radius:18px; margin-top:35px;" 
+                style="width:100%; height:700px; border:1px solid var(--border); border-radius:4px; margin-top:35px; background: #000;" 
                 loading="lazy" 
                 allowfullscreen 
                 allow="accelerometer; ambient-light-sensor; camera; microphone; gyroscope; display-capture; midi; clipboard-read; clipboard-write; encrypted-media; xr-spatial-tracking;">
             </iframe>
-            <a href="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" target="_blank" class="btn">Talk to History Now</a>
+            <a href="https://huggingface.co/spaces/TUOLATLABZ/Lady-Legalz" target="_blank" class="btn">TALK TO HISTORY NOW</a>
         </section>
 
         <section id="neural-hub">
             <h2>Neural Connectivity Hub</h2>
-            <p style="text-align:center;">Real-time diagnostics of the Lady Legalz backend</p>
             <div class="grid">
                 <div class="card">
                     <div class="status-pill"><div class="status-dot"></div> ACTIVE</div>
-                    <h3>HF Inference</h3>
-                    <p>Model: Olmo-3-7B-Instruct</p>
+                    <h3 style="margin-top:15px;">HF Inference</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Model: Olmo-3-7B-Instruct</p>
                 </div>
                 <div class="card">
                     <div class="status-pill"><div class="status-dot"></div> ACTIVE</div>
-                    <h3>Neo Tunnel</h3>
-                    <p>Reasoning Core Enabled</p>
+                    <h3 style="margin-top:15px;">Neo Tunnel</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Reasoning Core Enabled</p>
                 </div>
                 <div class="card">
                     <div class="status-pill"><div class="status-dot"></div> ACTIVE</div>
-                    <h3>CourtListener</h3>
-                    <p>Database Sync: 100%</p>
+                    <h3 style="margin-top:15px;">CourtListener</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Database Sync: 100%</p>
                 </div>
             </div>
         </section>
@@ -264,15 +285,15 @@
         <section id="forensics">
             <h2>Quantum Forensics</h2>
             <div class="grid">
-                <div class="card"><i class="fas fa-brain"></i><h3>Deepfake Destroyer</h3><p>Quantum-ready evidence validator</p></div>
-                <div class="card"><i class="fas fa-shield-alt"></i><h3>Evidence Chain</h3><p>Unbreakable judicial ledger</p></div>
-                <div class="card"><i class="fas fa-chart-area"></i><h3>Predictive Justice</h3><p>Anomaly detection for courts</p></div>
+                <div class="card"><i class="fas fa-brain"></i><h3>Deepfake Destroyer</h3><p style="font-size: 0.9rem; opacity: 0.7;">Quantum-ready evidence validator</p></div>
+                <div class="card"><i class="fas fa-shield-alt"></i><h3>Evidence Chain</h3><p style="font-size: 0.9rem; opacity: 0.7;">Unbreakable judicial ledger</p></div>
+                <div class="card"><i class="fas fa-network-wired"></i><h3>Predictive Justice</h3><p style="font-size: 0.9rem; opacity: 0.7;">Anomaly detection for courts</p></div>
             </div>
         </section>
 
         <section id="court">
             <h2>Digital Mock Court Beta 3</h2>
-            <div id="jitsi-container" style="height:500px; border-radius:18px; overflow:hidden; margin-top:30px; background:#000;"></div>
+            <div id="jitsi-container" style="height:600px; border:1px solid var(--border); border-radius:4px; overflow:hidden; margin-top:30px; background:#000;"></div>
         </section>
 
         <section id="projects">
@@ -280,36 +301,35 @@
             <div class="grid">
                 <div class="card">
                     <h3>Verdict Generator</h3>
-                    <iframe src="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" style="width:100%; height:200px; border:none; border-radius:16px;"></iframe>
+                    <iframe src="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" style="width:100%; height:250px; border:1px solid var(--border); border-radius:4px;"></iframe>
                 </div>
-                <div class="card"><h3>Predictive Oracle</h3><p>98%+ verdict accuracy simulation</p></div>
-                <div class="card"><h3>Verdict Ledger</h3><p>Eternal, tamper-proof rulings</p></div>
+                <div class="card"><h3>Predictive Oracle</h3><p style="font-size: 0.9rem; opacity: 0.7;">98%+ verdict accuracy simulation</p></div>
+                <div class="card"><h3>Verdict Ledger</h3><p style="font-size: 0.9rem; opacity: 0.7;">Eternal, tamper-proof rulings</p></div>
             </div>
         </section>
 
         <section id="studies">
             <h2>Judicial AI Case Studies (2025)</h2>
-            <p style="text-align:center;">Analyzing the real-world impact of automated justice and ethical AI integration.</p>
             <div class="grid">
                 <div class="card">
                     <div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen loading="lazy"></iframe></div>
-                    <h3>Case Study: 01</h3>
-                    <p>AI Precedent Mapping</p>
+                    <h3>Study: 01</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">AI Precedent Mapping</p>
                 </div>
                 <div class="card">
                     <div class="video"><iframe src="https://www.youtube.com/embed/ZMsSc_utZ40" allowfullscreen loading="lazy"></iframe></div>
-                    <h3>Case Study: 02</h3>
-                    <p>Predictive Sentencing Bias</p>
+                    <h3>Study: 02</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Predictive Sentencing Bias</p>
                 </div>
                 <div class="card">
                     <div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen loading="lazy"></iframe></div>
-                    <h3>Case Study: 03</h3>
-                    <p>Quantum Evidence Verification</p>
+                    <h3>Study: 03</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Quantum Evidence Verification</p>
                 </div>
                 <div class="card">
                     <div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen loading="lazy"></iframe></div>
-                    <h3>Case Study: 04</h3>
-                    <p>Neo-Intelligence Outcomes</p>
+                    <h3>Study: 04</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Neo-Intelligence Outcomes</p>
                 </div>
             </div>
         </section>
@@ -317,16 +337,16 @@
         <section id="research">
             <h2>Legality Research</h2>
             <div class="grid">
-                <div class="card" onclick="openPreview(1)"><strong>Judge AI Paper</strong><p>The foundation</p></div>
-                <div class="card" onclick="openPreview(2)"><strong>Ethical Framework</strong><p>Bias mitigation</p></div>
-                <div class="card" onclick="openPreview(3)"><strong>Requirement Study</strong><p>Technical benchmarks</p></div>
-                <div class="card" onclick="openPreview(4)"><strong>Jurisprudence Vision</strong><p>Future of law</p></div>
+                <div class="card" onclick="openPreview(1)" style="cursor:pointer;"><h3>Judge AI Paper</h3><p>Technical benchmarks</p></div>
+                <div class="card" onclick="openPreview(2)" style="cursor:pointer;"><h3>Ethical Framework</h3><p>Bias mitigation</p></div>
+                <div class="card" onclick="openPreview(3)" style="cursor:pointer;"><h3>Requirement Study</h3><p>Judicial adoption</p></div>
+                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>Jurisprudence Vision</h3><p>Future of law</p></div>
             </div>
         </section>
     </main>
 
     <footer>
-        © 2025-2026 TUOLAT LABZ • Lady Legalz Beta 4.0.0
+        © 2025-2026 TUOLAT LABZ • LADY LEGALZ CORE v4.0.0
     </footer>
 
     <div id="preview-modal" class="modal">
@@ -338,15 +358,16 @@
 
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
-        // PRELOADER HANDLER
+        // PRELOADER
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => { preloader.style.display = 'none'; }, 800);
-            }, 2500); // Duration matches animation
+            }, 2500);
         });
 
+        // JITSI
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
                 new JitsiMeetExternalAPI("meet.jit.si", {
@@ -358,6 +379,7 @@
             }
         };
 
+        // THEME TOGGLE
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const icon = toggle.querySelector('i');
@@ -374,11 +396,12 @@
             localStorage.setItem('theme', target);
         });
 
+        // MODALS
         const previews = {
-            1: "<h3>Lady Legalz Court Client (2026)</h3><p>LLM judicial reasoning simulation.</p><a href='#' style='color:var(--accent)'>Read More</a>",
-            2: "<h3>Ethical Framework</h3><p>Safety protocols and bias mitigation strategies.</p><a href='#' style='color:var(--accent)'>Read More</a>",
-            3: "<h3>Legality Requirements</h3><p>Meeting all 10 judicial requirements for AI adoption.</p><a href='#' style='color:var(--accent)'>Read More</a>",
-            4: "<h3>Digital Justice</h3><p>The vision for automated legal systems and PQC ledgers.</p><a href='#' style='color:var(--accent)'>Read More</a>"
+            1: "<h3>Judge AI Paper</h3><p>LLM judicial reasoning simulation protocols.</p><a href='#' style='color:var(--accent)'>Read Paper</a>",
+            2: "<h3>Ethical Framework</h3><p>Safety protocols and bias mitigation strategies for automated justice.</p><a href='#' style='color:var(--accent)'>Read Framework</a>",
+            3: "<h3>Requirement Study</h3><p>Technical benchmarks for AI adoption in modern courtrooms.</p><a href='#' style='color:var(--accent)'>Read Study</a>",
+            4: "<h3>Jurisprudence Vision</h3><p>The roadmap for automated legal systems and PQC ledgers.</p><a href='#' style='color:var(--accent)'>Read Vision</a>"
         };
 
         function openPreview(n) {
