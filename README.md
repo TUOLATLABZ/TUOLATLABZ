@@ -1,6 +1,6 @@
 # TUOLAT LABZ
 
-https://tuolatjuris.org ![Lady Legalz Interface](dashboard-preview.png)
+https://tuolatjuris.org
 
 **Innovation Lab for The University of Law and Technology (TUOLAT)**
 
@@ -62,5 +62,5 @@ This TUOLAT LABZ: LADY LEGALZ BETA 4 is licensed under the MIT License — see t
 
 Contact the Innovation Lab: [innovation@tuolatjuris.org](mailto:innovation@tuolatjuris.org)
 
-**Quick Start**:
+**Lady Legalz Beta 4 Quick Start**:
 Coming Soon!
