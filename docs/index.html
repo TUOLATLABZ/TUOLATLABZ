@@ -27,16 +27,59 @@
             --card: rgba(255, 255, 255, 0.95); 
             --accent: #0055ff; 
             --neon: #6d28d9; 
-            --text: #050510; /* Fixed: High contrast for light mode */
+            --text: #050510;
             --border: rgba(0, 85, 255, 0.4); 
             --glow: 0 5px 15px rgba(0, 85, 255, 0.2);
             --panel-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* UI POLISH: SCANLINE OVERLAY */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            opacity: 0.4;
         }
 
         /* CUSTOM NEON SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #030008; }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; box-shadow: var(--glow); }
+
+        /* DATA FEED STYLING */
+        #data-feed-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: rgba(0, 10, 15, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            height: 100px;
+            overflow-y: hidden;
+            box-shadow: var(--glow);
+            position: relative;
+        }
+        #data-feed-container::before {
+            content: "LIVE_SYSTEM_LOGS";
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: var(--bg);
+            padding: 0 5px;
+            color: var(--accent);
+            font-family: 'Orbitron';
+            font-size: 0.6rem;
+        }
+        .log-entry { color: var(--accent); margin-bottom: 4px; opacity: 0.8; }
+        .log-entry span { color: #fff; opacity: 0.5; margin-right: 10px; }
 
         /* FLOATING ANIMATION */
         @keyframes float {
@@ -49,7 +92,7 @@
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030008;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.8s ease;
+            z-index: 10000; transition: opacity 0.8s ease;
         }
         .loader-logo { font-family: 'Orbitron', sans-serif; color: var(--accent); font-size: 2.5rem; margin-bottom: 20px; text-shadow: var(--glow); animation: pulse-glow 2s infinite; }
         .loader-bar-container { width: 300px; height: 2px; background: rgba(0, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
@@ -73,14 +116,13 @@
             overflow-x: hidden;
         }
 
-        /* BACKGROUND WITH GRAVEL/NOISE EFFECT */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
                 linear-gradient(rgba(3, 0, 8, 0.7), rgba(3, 0, 8, 0.7)),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), /* Gravel texture overlay */
+                url('https://www.transparenttextures.com/patterns/asfalt-dark.png'),
                 url('dashboard-preview.png.png') no-repeat center center fixed;
             background-size: auto, auto, cover;
             opacity: 0.5; 
@@ -117,7 +159,6 @@
 
         main {flex:1; max-width:1300px; margin:40px auto; padding:0 20px;}
         
-        /* FLOATING BOXES SYNCED WITH DASHBOARD STYLE */
         section {
             background: var(--panel-bg); 
             border-radius: 10px; padding: 40px; margin-bottom: 80px; 
@@ -125,10 +166,9 @@
             backdrop-filter: blur(10px); 
             box-shadow: var(--glow);
             position: relative;
-            animation: float 6s ease-in-out infinite; /* Floating effect applied here */
+            animation: float 6s ease-in-out infinite;
         }
         
-        /* Offset floating for every second section for a more natural look */
         section:nth-child(even) { animation-delay: 1s; animation-duration: 7s; }
 
         section::after {
@@ -199,6 +239,10 @@
                     <i class="fas fa-balance-scale"></i> Trump v. United States: Established presumptive immunity for presidents for official acts, but not unofficial ones.
                 </span>
             </div>
+        </div>
+
+        <div id="data-feed-container">
+            <div id="data-feed-logs"></div>
         </div>
     </header>
 
@@ -273,7 +317,7 @@
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen></iframe></div><h3>Study: 01</h3></div>
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen></iframe></div><h3>Study: 02</h3></div>
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen></iframe></div><h3>Study: 03</h3></div>
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/v=I7OdEfGOX7k&t=30s" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
+                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
             </div>
         </section>
 
@@ -309,6 +353,33 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 800); }, 2500);
         });
+
+        // DATA FEED SCRIPT
+        const logsContainer = document.getElementById('data-feed-logs');
+        const logMessages = [
+            "BOOTING NEO-INTELLIGENCE CORE...",
+            "SYNCING WITH COURT LISTENER API...",
+            "ANALYZING 2025 CASE PRECEDENTS...",
+            "DEEPFAKE DETECTION: ACTIVE",
+            "REASONING TUNNEL ESTABLISHED.",
+            "LL_BETA_v4.0.0 STATUS: OPTIMAL",
+            "INGESTING NEW DATASET: TUOLAT_ARCHIVE_09",
+            "CONSTRUCTING DIGITAL MOCK COURT NODES...",
+            "LEGAL LEXICON SYNC COMPLETE.",
+            "PREDICTIVE JUSTICE ALGORITHM LOADED."
+        ];
+
+        function addLog() {
+            const time = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const msg = logMessages[Math.floor(Math.random() * logMessages.length)];
+            const div = document.createElement('div');
+            div.className = 'log-entry';
+            div.innerHTML = `<span>[${time}]</span> ${msg}`;
+            logsContainer.prepend(div);
+            if (logsContainer.children.length > 5) logsContainer.lastChild.remove();
+        }
+        setInterval(addLog, 3000);
+        addLog(); // Start immediately
 
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
