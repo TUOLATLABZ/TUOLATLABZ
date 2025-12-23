@@ -12,27 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --bg: #030008; 
-            --card: rgba(10, 10, 25, 0.7); 
-            --accent: #00ffff; 
-            --neon: #8b5cf6; 
-            --text: #ffffff; 
-            --border: rgba(0, 255, 255, 0.6); 
+            --bg: #030008;
+            --card: rgba(10, 10, 25, 0.7);
+            --accent: #00ffff;
+            --neon: #8b5cf6;
+            --text: #ffffff;
+            --border: rgba(0, 255, 255, 0.6);
             --glow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.2);
             --panel-bg: rgba(0, 10, 20, 0.85);
         }
-
         [data-theme="light"] {
-            --bg: #f4f7ff; 
-            --card: rgba(255, 255, 255, 0.95); 
-            --accent: #0055ff; 
-            --neon: #6d28d9; 
+            --bg: #f4f7ff;
+            --card: rgba(255, 255, 255, 0.95);
+            --accent: #0055ff;
+            --neon: #6d28d9;
             --text: #050510;
-            --border: rgba(0, 85, 255, 0.4); 
+            --border: rgba(0, 85, 255, 0.4);
             --glow: 0 5px 15px rgba(0, 85, 255, 0.2);
             --panel-bg: rgba(255, 255, 255, 0.9);
         }
-
         /* GLITCH ANIMATION */
         .glitch {
             position: relative;
@@ -69,26 +67,23 @@
             10% { clip: rect(2px, 9999px, 40px, 0); }
             100% { clip: rect(2px, 9999px, 40px, 0); }
         }
-
         /* UI POLISH: SCANLINE OVERLAY */
         body::after {
             content: " ";
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
                         linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             z-index: 9999;
             background-size: 100% 4px, 3px 100%;
             pointer-events: none;
             opacity: 0.4;
         }
-
         /* CUSTOM NEON SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #030008; }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; box-shadow: var(--glow); }
-
         /* DATA FEED STYLING */
         #data-feed-container {
             max-width: 1000px;
@@ -117,7 +112,6 @@
         }
         .log-entry { color: var(--accent); margin-bottom: 4px; opacity: 0.8; }
         .log-entry span { color: #fff; opacity: 0.5; margin-right: 10px; }
-
         /* SYSTEM STATUS CHART STYLING */
         .chart-container {
             display: flex;
@@ -147,21 +141,18 @@
             font-family: 'Orbitron';
             color: var(--accent);
         }
-
         /* NEURAL CANVAS STYLING */
         #neural-canvas {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0; pointer-events: none; opacity: 0.3;
         }
-
         /* FLOATING ANIMATION */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
-
         /* PRE-LOADER STYLES */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030008;
@@ -175,69 +166,61 @@
         
         @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
         @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
         * {margin:0; padding:0; box-sizing:border-box;}
         html { scroll-behavior: smooth; }
         body {
-            font-family:'Inter',sans-serif; 
-            background:var(--bg); 
-            color:var(--text); 
-            min-height:100vh; 
-            display:flex; 
-            flex-direction:column; 
+            font-family:'Inter',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
             transition: background 0.4s, color 0.4s;
             position: relative;
             overflow-x: hidden;
         }
-
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: 
+            background:
                 linear-gradient(rgba(3, 0, 8, 0.7), rgba(3, 0, 8, 0.7)),
                 url('https://www.transparenttextures.com/patterns/asfalt-dark.png'),
                 url('dashboard-preview.png.png') no-repeat center center fixed;
             background-size: auto, auto, cover;
-            opacity: 0.5; 
+            opacity: 0.5;
             z-index: -1;
             pointer-events: none;
         }
-
         [data-theme="light"] body::before {
             background: linear-gradient(rgba(244, 247, 255, 0.8), rgba(244, 247, 255, 0.8)),
                         url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
             opacity: 1;
         }
-
         header {
-            background: rgba(0, 5, 15, 0.9); 
-            backdrop-filter: blur(20px); 
-            text-align: center; padding: 60px 20px; 
+            background: rgba(0, 5, 15, 0.9);
+            backdrop-filter: blur(20px);
+            text-align: center; padding: 60px 20px;
             border-bottom: 2px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         [data-theme="light"] header { background: rgba(255, 255, 255, 0.95); }
-
         h1 {font-family:'Orbitron',sans-serif; font-size:4.5rem; color:var(--accent); text-shadow: var(--glow); letter-spacing:8px; text-transform: uppercase;}
         .first-badge {font-size:1.2rem; font-family: 'Orbitron'; letter-spacing: 3px; color: var(--neon); font-weight:bold; margin-bottom: 10px;}
         .tagline {font-size:1.1rem; max-width:1000px; margin:0 auto 20px; opacity:0.8; font-family: 'Exo 2';}
-
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
         nav {background:rgba(0,0,0,0.9); backdrop-filter:blur(15px); padding:15px 0; position:sticky; top:0; z-index:100; border-bottom: 1px solid var(--border);}
         [data-theme="light"] nav { background: rgba(255, 255, 255, 0.95); }
         nav ul {display:flex; justify-content:center; flex-wrap:wrap; gap:20px; list-style:none;}
         nav a {color:var(--text); padding:8px 18px; border-radius:4px; text-decoration:none; font-family: 'Orbitron'; font-size: 0.8rem; transition:0.3s;}
         nav a:hover {color: var(--accent); text-shadow: var(--glow);}
-
         main {flex:1; max-width:1300px; margin:40px auto; padding:0 20px;}
         
         section {
-            background: var(--panel-bg); 
-            border-radius: 10px; padding: 40px; margin-bottom: 80px; 
-            border: 1px solid var(--border); 
-            backdrop-filter: blur(10px); 
+            background: var(--panel-bg);
+            border-radius: 10px; padding: 40px; margin-bottom: 80px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
             box-shadow: var(--glow);
             position: relative;
             animation: float 6s ease-in-out infinite;
@@ -245,44 +228,42 @@
         }
         
         section:nth-child(even) { animation-delay: 1s; animation-duration: 7s; }
-
         section::after {
             content: ""; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);
         }
         
         h2 {font-family:'Orbitron',sans-serif; color:var(--accent); font-size:1.8rem; text-align:left; margin-bottom:30px; border-left: 4px solid var(--accent); padding-left: 15px; position: relative; z-index: 1;}
-
         .video {position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border: 1px solid var(--border); border-radius:4px; margin:30px 0;}
         .video iframe {position:absolute; top:0; left:0; width:100%; height:100%; border:none;}
-
         .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:35px; position: relative; z-index: 1;}
         
         .card {
-            background: rgba(0, 20, 40, 0.6); padding: 25px; border-radius: 5px; 
+            background: rgba(0, 20, 40, 0.6); padding: 25px; border-radius: 5px;
             border: 1px solid rgba(0, 255, 255, 0.2); transition: 0.3s;
         }
         [data-theme="light"] .card { background: rgba(0, 85, 255, 0.05); border-color: rgba(0, 85, 255, 0.1); }
         .card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: scale(1.02); }
         .card i {font-size:2.5rem; color:var(--accent); margin-bottom:15px; display: block;}
-
         .btn {display:inline-block; padding:15px 35px; background: transparent; color:var(--accent); border: 1px solid var(--accent); font-family: 'Orbitron'; text-decoration:none; margin:30px auto; display:block; max-width:280px; text-align:center; transition: 0.3s;}
         .btn:hover { background: var(--accent); color: #000; box-shadow: var(--glow); }
-
+        
+        /* SPECIAL PROJECT STYLES */
+        .btn-purple { color: var(--neon); border-color: var(--neon); }
+        .btn-purple:hover { background: var(--neon); color: white; box-shadow: 0 0 20px var(--neon); }
+        .card-link { text-decoration: none; color: inherit; display: block; }
+        .card-link .card { border-color: var(--neon); }
+        
         footer {text-align:center; padding:40px; background:rgba(0,0,0,0.95); border-top:1px solid var(--border); font-family: 'Orbitron'; font-size: 0.8rem; color: var(--accent); letter-spacing: 2px;}
         [data-theme="light"] footer { background: #f4f7ff; border-color: var(--border); }
-
         .theme-toggle {position:fixed; top:20px; right:20px; background:rgba(0,0,0,0.8); border:1px solid var(--border); border-radius:4px; width:45px; height:45px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--accent); z-index:200;}
         [data-theme="light"] .theme-toggle { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-
         .status-pill {display:inline-flex; align-items:center; gap:8px; padding:5px 12px; background:rgba(0, 255, 255, 0.05); border:1px solid var(--border); border-radius:4px; font-family:'Orbitron'; font-size:0.7rem; color: var(--accent);}
         .status-dot {width:8px; height:8px; border-radius:50%; background:#00ff00; box-shadow:0 0 10px #00ff00; animation:pulse 2s infinite;}
-
         .modal {display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:300; justify-content:center; align-items:center; padding:20px;}
         .modal.active {display:flex;}
         .modal-content {max-width:800px; width:100%; background:var(--card); border-radius:10px; padding:40px; position:relative; border: 1px solid var(--border);}
         .close {position:absolute; top:20px; right:30px; font-size:2.5rem; color:var(--accent); cursor:pointer;}
-
-        @media (max-width:768px){ h1{font-size:2.2rem;} section{padding:20px; animation: none;} }
+        @media (max-width:768px){ h1{font-size:2.2rem;} section{padding:20px; animation: none;} .btn-container { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
@@ -291,40 +272,28 @@
         <div class="loader-bar-container"><div class="loader-bar"></div></div>
         <div class="loader-text">SYNCING...TUOLAT.........NEO-INTELLIGENCE..........LOADING LADY LEGALZ 2026.....</div>
     </div>
-
     <div class="theme-toggle" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></div>
-
     <header>
         <p class="first-badge">BETA 4 | NEO-INTELLIGENCE</p>
         <h1 id="main-title" class="glitch" data-text="LADY LEGALZ">LADY LEGALZ</h1>
         <p class="tagline">TUOLAT LABZ 2026</p>
-
         <div style="margin-top: 35px; background: rgba(0, 20, 30, 0.8); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; padding: 12px 0; max-width: 1000px; margin-left: auto; margin-right: auto; box-shadow: var(--glow);">
             <div style="display: flex; white-space: nowrap; animation: ticker 40s linear infinite;">
                 <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-bolt"></i> Cox Communications v. Sony Music: Justices debated internet service provider liability for customer copyright infringement, showing signs they might not fully uphold large penalties.
-                    
+                    <i class="fas fa-bolt"></i> Cox Communications v. Sony Music: Justices debated internet service provider liability for customer copyright infringement.
+                </span>
                 <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-gavel"></i>BPJ v. [State]: A transgender athlete challenged a state law banning transgender girls from girls' sports, a case with nationwide implications for Title IX.
+                    <i class="fas fa-gavel"></i> BPJ v. [State]: Transgender athlete challenges state law; nationwide implications for Title IX.
                 </span>
                 <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-microchip"></i> Flower Foods v. Brock: The Court considered if delivery drivers are "transportation workers" under the Federal Arbitration Act.
-                </span>
-                <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-balance-scale"></i> Urias-Orellana v. Bondi: A case clarifying the role of federal courts in reviewing asylum decisions.
-                </span>
-                </span>
-                <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-balance-scale"></i> Trump Administration Firings: The Court dealt with requests to remove officials (like Shira Perlmutter, head of Copyright Office) pending legal challenges to their appointments.
+                    <i class="fas fa-microchip"></i> Flower Foods v. Brock: Court reviews Federal Arbitration Act for transportation workers.
                 </span>
             </div>
         </div>
-
         <div id="data-feed-container">
             <div id="data-feed-logs"></div>
         </div>
     </header>
-
     <nav>
         <ul>
             <li><a href="#home">HOME</a></li>
@@ -337,15 +306,19 @@
             <li><a href="https://github.com/TUOLATLABZ" target="_blank">GITHUB</a></li>
         </ul>
     </nav>
-
     <main>
         <section id="home">
             <h2>TUOLAT OVERVIEW</h2>
-            <p style="margin-bottom: 20px; opacity: 0.8;">TUOLAT LABZ<strong>LADY LEGALZ</strong>2026.</p>
+            <p style="margin-bottom: 20px; opacity: 0.8;">TUOLAT LABZ <strong>LADY LEGALZ</strong> 2026.</p>
             <div class="video">
                 <iframe src="https://www.youtube.com/embed/bRO39Gz2cv4" title="Legal Tech Implementation" allowfullscreen loading="lazy"></iframe>
             </div>
-            <a href="#bot" class="btn">TUOLAT DIGITAL MOCK COURT</a>
+            <div class="btn-container" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#bot" class="btn" style="margin: 0;">TUOLAT DIGITAL MOCK COURT</a>
+                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" class="btn btn-purple glitch" data-text="OPEN CONTRACTGEN" style="margin: 0;">
+                    <i class="fas fa-file-signature"></i> OPEN CONTRACTGEN
+                </a>
+            </div>
         </section>
 
         <section id="bot">
@@ -354,22 +327,19 @@
         </section>
 
         <section id="neural-hub">
-            <canvas id="neural-canvas"></canvas> 
+            <canvas id="neural-canvas"></canvas>
             <h2>NEO-INTELLIGENCE</h2>
             <div class="grid">
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">HF_INFERENCE</h3><p style="font-size: 0.9rem; opacity: 0.7;">Model: OLMO-3-7B-INSTRUCT</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">NEO_TUNNEL</h3><p style="font-size: 0.9rem; opacity: 0.7;">REASONING CORE ENABLED</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">LL_BETA_v4.0.0</h3><p style="font-size: 0.9rem; opacity: 0.7;">TUOLAT DATABASE SYNC: 100%</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">COURTLISTENER</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 100%</p></div>
-                <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">GROK API</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 100%</p></div>
             </div>
-
             <div class="chart-container" style="position: relative; z-index: 1;">
                 <div class="bar" style="height: 80%;" data-label="CPU" id="bar-cpu"></div>
                 <div class="bar" style="height: 60%;" data-label="NEURAL" id="bar-neural"></div>
                 <div class="bar" style="height: 90%;" data-label="LATENCY" id="bar-latency"></div>
                 <div class="bar" style="height: 40%;" data-label="NODES" id="bar-nodes"></div>
-                <div class="bar" style="height: 70%;" data-label="SYNC" id="bar-sync"></div>
             </div>
         </section>
 
@@ -379,7 +349,6 @@
                 <div class="card"><i class="fas fa-brain"></i><h3>DEEPFAKE DESTROYER</h3></div>
                 <div class="card"><i class="fas fa-shield-alt"></i><h3>EVIDENCE CHAIN</h3></div>
                 <div class="card"><i class="fas fa-network-wired"></i><h3>PREDICTIVE JUSTICE</h3></div>
-                <div class="card"><i class="fas fa-chart-area"></i><h3>ANOMALY DETECTION</h3></div>
             </div>
         </section>
 
@@ -392,10 +361,18 @@
             <h2>TUOLAT PROJECTS</h2>
             <div class="grid">
                 <div class="card"><h3>Lady Legalz</h3><p>Beta 4 | NEO-INTELLIGENCE</p></div>
-                <div class="card"><h3>ContractGen</h3><p>LEGAL REVIEW GENERATOR</p></div>
+                
+                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" class="card-link">
+                    <div class="card">
+                        <i class="fas fa-file-contract" style="color: var(--neon);"></i>
+                        <h3 style="color: var(--neon);">ContractGen</h3>
+                        <p>LEGAL REVIEW GENERATOR</p>
+                        <span style="font-family: 'Orbitron'; font-size: 0.6rem; color: var(--neon); text-decoration: underline;">LAUNCH INTERFACE ></span>
+                    </div>
+                </a>
+
                 <div class="card"><h3>Summary</h3><p>AI LEGALITY OS</p></div>
                 <div class="card"><h3>Forensics</h3><p>DIGITAL JUDICIAL ANALYZATION</p></div>
-                <div class="card"><h3>Digital Court</h3><p>TUOLAT DIGITAL MOCK COURT</p></div>
             </div>
         </section>
 
@@ -404,10 +381,6 @@
             <div class="grid">
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen></iframe></div><h3>Study: 01</h3></div>
                 <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen></iframe></div><h3>Study: 02</h3></div>
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/JQuVZQow6ck" allowfullscreen></iframe></div><h3>Study: 03</h3></div>
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/I7OdEfGOX7k" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/jmmW0F0biz0" allowfullscreen></iframe></div><h3>Study: 04</h3></div> 
-                <div class="card"><div class="video"><iframe src="https://www.youtube.com/embed/u9Ji_p0ODKk" allowfullscreen></iframe></div><h3>Study: 04</h3></div>
             </div>
         </section>
 
@@ -417,26 +390,18 @@
                 <div class="card" onclick="openPreview(1)" style="cursor:pointer;"><h3>TUOLAT LL_BETA_v4.1.1</h3></div>
                 <div class="card" onclick="openPreview(2)" style="cursor:pointer;"><h3>NEGOTIATION SYNC</h3></div>
                 <div class="card" onclick="openPreview(3)" style="cursor:pointer;"><h3>RISK AND CERT ODDS </h3></div>
-                <div class="card" onclick="openPreview(4)" style="cursor:pointer;"><h3>CASE CLIENT</h3></div>
-                <div class="card" onclick="openPreview(5)" style="cursor:pointer;"><h3>LEXICON BETA 1</h3></div>
-                <div class="card" onclick="openPreview(6)" style="cursor:pointer;"><h3>OPPOSITION SIM</h3></div>
-                <div class="card" onclick="openPreview(7)" style="cursor:pointer;"><h3>ARCHIVES</h3></div>
-                <div class="card" onclick="openPreview(8)" style="cursor:pointer;"><h3>DATA INGESTION</h3></div>
             </div>
         </section>
     </main>
-
     <footer>
         © 2025-2026 TUOLAT LABZ • LADY LEGALZ BETA v4.0.0
     </footer>
-
     <div id="preview-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closePreview()">×</span>
             <div id="preview-body"></div>
         </div>
     </div>
-
     <script src="https://meet.jit.si/external_api.js"></script>
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -454,15 +419,12 @@
             osc.start();
             osc.stop(audioCtx.currentTime + 0.1);
         }
-
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 800); }, 2500);
         });
-
         const logsContainer = document.getElementById('data-feed-logs');
-        const logMessages = ["BOOTING NEO-INTELLIGENCE CORE...", "SYNCING WITH COURT LISTENER API...", "ANALYZING 2025 CASE PRECEDENTS...", "DEEPFAKE DETECTION: ACTIVE", "REASONING TUNNEL ESTABLISHED.", "LL_BETA_v4.0.0 STATUS: OPTIMAL", "INGESTING NEW DATASET: TUOLAT_ARCHIVE_09", "CONSTRUCTING DIGITAL MOCK COURT NODES...", "LEGAL LEXICON SYNC COMPLETE.", "PREDICTIVE JUSTICE ALGORITHM LOADED."];
-
+        const logMessages = ["BOOTING NEO-INTELLIGENCE CORE...", "SYNCING WITH COURT LISTENER API...", "ANALYZING 2025 CASE PRECEDENTS...", "DEEPFAKE DETECTION: ACTIVE", "REASONING TUNNEL ESTABLISHED.", "LL_BETA_v4.0.0 STATUS: OPTIMAL", "CONTRACTGEN SYNC COMPLETE."];
         function addLog() {
             const time = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
             const msg = logMessages[Math.floor(Math.random() * logMessages.length)];
@@ -473,8 +435,6 @@
             if (logsContainer.children.length > 5) logsContainer.lastChild.remove();
         }
         setInterval(addLog, 3000);
-        addLog();
-
         function updateChart() {
             const bars = document.querySelectorAll('.bar');
             bars.forEach(bar => {
@@ -483,14 +443,11 @@
             });
         }
         setInterval(updateChart, 2000);
-
-        // GLITCH SCRIPT
         const title = document.getElementById('main-title');
         setInterval(() => {
             title.classList.add('glitch-active');
             setTimeout(() => title.classList.remove('glitch-active'), 150);
         }, 4000);
-
         const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -501,7 +458,6 @@
         }
         window.addEventListener('resize', resize);
         resize();
-
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -532,7 +488,6 @@
             requestAnimationFrame(animate);
         }
         animate();
-
         window.onload = () => {
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
                 new JitsiMeetExternalAPI("meet.jit.si", {
@@ -543,21 +498,17 @@
                 });
             }
         };
-
         const toggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
-        const icon = toggle.querySelector('i');
         toggle.addEventListener('click', () => {
             playCyberSound();
             const current = html.getAttribute('data-theme');
             const target = current === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', target);
-            icon.className = target === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         });
-
         function openPreview(n) {
             playCyberSound();
-            const texts = {1:"TUOLAT LL_BETA_v4.1.1", 2:"NEGOTIATION SYNC", 3:"RISK AND CERT ODDS", 4:"CASE CLIENT", 5:"LEXICON BETA 1", 6:"OPPOSITION SIM", 7:"ARCHIVES", 8:"DATA INGESTION" };
+            const texts = {1:"TUOLAT LL_BETA_v4.1.1", 2:"NEGOTIATION SYNC", 3:"RISK AND CERT ODDS"};
             document.getElementById('preview-body').innerHTML = `<h3>${texts[n]}</h3><p>COMING SOON 2026!</p>`;
             document.getElementById('preview-modal').classList.add('active');
         }
