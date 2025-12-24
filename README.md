@@ -47,7 +47,7 @@ NEO-INTELLIGENCE- 🟢 Active - 3 Students, 1 Faculty
 TUOLAT MOCK COURT - 🟡 Prototype Active - 1 Faculty  
 
 **Lady Legalz ContractGen**
-BETA 4 - 🟡 Prototype Active - 1 Faculty  
+BETA 4 - 🟢 Prototype Active Online - 5 Students - 1 Faculty  
 
 **Lady Legalz Summary**
 LEGAL TEXT ANALYSIS - 🟡 Prototype Active - 1 Faculty             
@@ -55,7 +55,7 @@ LEGAL TEXT ANALYSIS - 🟡 Prototype Active - 1 Faculty
 ### Featured Project: LADY LEGALZ BETA 4
 **What is Lady Legalz?**: LEGALITY OS.
 
-**Demo**: [Try the beta](https://legalai.tuolatjuris.org) (Coming Soon 2026!)
+**Demo**: (Coming Soon 2026!)
 
 ## License
 
