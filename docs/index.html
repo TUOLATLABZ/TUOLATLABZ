@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUOLAT LABZ 2026 | LADY LEGALZ BETA 4</title>
     <meta name="description" content="LADY LEGALZ | NEO-INTELLIGENCE">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Exo+2:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
         :root {
             --bg: #030008;
@@ -31,6 +33,13 @@
             --glow: 0 5px 15px rgba(0, 85, 255, 0.2);
             --panel-bg: rgba(255, 255, 255, 0.9);
         }
+
+        /* TICKER ANIMATION */
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         /* GLITCH ANIMATION */
         .glitch { position: relative; display: inline-block; }
         .glitch::before, .glitch::after {
@@ -64,6 +73,7 @@
             10% { clip: rect(2px, 9999px, 40px, 0); }
             100% { clip: rect(2px, 9999px, 40px, 0); }
         }
+
         /* UI SCANLINES */
         body::after {
             content: " ";
@@ -77,6 +87,7 @@
             pointer-events: none;
             opacity: 0.4;
         }
+
         /* SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #030008; }
@@ -186,7 +197,6 @@
         .btn {display:inline-block; padding:15px 35px; background: transparent; color:var(--accent); border: 1px solid var(--accent); font-family: 'Orbitron'; text-decoration:none; transition: 0.3s; text-align:center; min-width: 250px;}
         .btn:hover { background: var(--accent); color: #000; box-shadow: var(--glow); }
         
-        /* NEW STYLES FOR CONTRACTGEN */
         .btn-contract { border-color: var(--neon); color: var(--neon); }
         .btn-contract:hover { background: var(--neon); color: #fff; box-shadow: 0 0 20px var(--neon); }
         .card-contract { border-color: var(--neon) !important; cursor: pointer; }
@@ -212,6 +222,7 @@
         <div class="loader-bar-container"><div class="loader-bar"></div></div>
         <div class="loader-text">SYNCING...TUOLAT.........NEO-INTELLIGENCE..........LOADING LADY LEGALZ 2026.....</div>
     </div>
+    
     <div class="theme-toggle" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></div>
     
     <header>
@@ -225,10 +236,13 @@
                     <i class="fas fa-bolt"></i> Cox Communications v. Sony Music: Internet service provider liability debates ongoing.
                 </span>
                 <span style="padding: 0 50px; color: #fff; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px;">
-                    <i class="fas fa-gavel"></i> BPJ v. [State]: Transgender athlete law challenged under Title IX.
+                    <i class="fas fa-gavel"></i> BPJ v. State: Transgender athlete law challenged under Title IX.
                 </span>
                 <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px;">
                     <i class="fas fa-microchip"></i> Flower Foods v. Brock: Court weighs transportation worker status.
+                </span>
+                <span style="padding: 0 50px; color: var(--accent); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px;">
+                    <i class="fas fa-scales"></i> Trump v. Illinois: The Court rejected efforts to deploy the National Guard to Chicago, a rare denial on the emergency docket concerning executive power, notes SCOTUSblog and The Wall Street Journal.
                 </span>
             </div>
         </div>
@@ -242,12 +256,12 @@
         <ul>
             <li><a href="#home">HOME</a></li>
             <li><a href="#bot">LADY LEGALZ 4.0</a></li>
-            <li><a href="#forensics">FORENSICS</a></li>
+            <li><a href="#forensics">NEO-FORENSICS</a></li>
             <li><a href="#court">DIGITAL COURT</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#studies">CASE-STUDIES</a></li>
-            <li><a href="#research">RESEARCH</a></li>
-            <li><a href="https://github.com/TUOLATLABZ" target="_blank">GITHUB</a></li>
+            <li><a href="#projects">TUOLAT PROJECTS</a></li>
+            <li><a href="#studies">TUOLAT CASE-STUDIES</a></li>
+            <li><a href="#research">TUOLAT RESEARCH</a></li>
+            <li><a href="https://github.com/TUOLATLABZ" target="_blank" rel="noopener">GITHUB</a></li>
         </ul>
     </nav>
 
@@ -256,11 +270,11 @@
             <h2>TUOLAT OVERVIEW</h2>
             <p style="margin-bottom: 20px; opacity: 0.8;">TUOLAT LABZ <strong>LADY LEGALZ</strong> 2026.</p>
             <div class="video">
-                <iframe src="https://www.youtube.com/embed/bRO39Gz2cv4" title="Legal Tech Implementation" allowfullscreen loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/CAKGKkWf0tI" title="Legal Tech Implementation" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="flex-btn-group" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <a href="#bot" class="btn">TUOLAT DIGITAL MOCK COURT</a>
-                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" class="btn btn-contract glitch" data-text="OPEN CONTRACTGEN">
+                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" rel="noopener" class="btn btn-contract glitch" data-text="OPEN CONTRACTGEN">
                     <i class="fas fa-file-signature"></i> OPEN CONTRACTGEN
                 </a>
             </div>
@@ -268,16 +282,18 @@
 
         <section id="bot">
             <h2>LADY LEGALZ BETA v4.0.0 2026</h2>
-            <iframe src="https://tuolatlabz-lady-legalz.hf.space" style="width:100%; height:700px; border:1px solid var(--border); border-radius:4px; background: #000;" loading="lazy" allowfullscreen></iframe>
+            <iframe src="https://tuolatlabz-lady-legalz.hf.space" style="width:100%; height:700px; border:1px solid var(--border); border-radius:4px; background: #000;" loading="lazy" allowfullscreen title="Lady Legalz AI Chat"></iframe>
         </section>
 
         <section id="neural-hub">
             <canvas id="neural-canvas"></canvas>
             <h2>NEO-INTELLIGENCE</h2>
             <div class="grid">
-                <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">HF_INFERENCE</h3><p style="font-size: 0.9rem; opacity: 0.7;">Model: OLMO-3-7B-INSTRUCT</p></div>
+                <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">HF_INFERENCE</h3><p style="font-size: 0.9rem; opacity: 0.7;">Model: OLMO-3-7B-INSTRUCT(BETA 2)</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">NEO_TUNNEL</h3><p style="font-size: 0.9rem; opacity: 0.7;">REASONING CORE ENABLED</p></div>
                 <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">COURTLISTENER</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 100%</p></div>
+                <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">TUOLAT LABZ</h3><p style="font-size: 0.9rem; opacity: 0.7;">NEO-INTELLIGENCE REASONING</p></div>
+                <div class="card"><div class="status-pill"><div class="status-dot"></div> ACTIVE</div><h3 style="margin-top:15px;">GROK API</h3><p style="font-size: 0.9rem; opacity: 0.7;">API SYNC: 92% STABLE</p></div>
             </div>
             <div class="chart-container">
                 <div class="bar" style="height: 80%;" data-label="CPU"></div>
@@ -293,6 +309,7 @@
                 <div class="card"><i class="fas fa-brain"></i><h3>DEEPFAKE DESTROYER</h3></div>
                 <div class="card"><i class="fas fa-shield-alt"></i><h3>EVIDENCE CHAIN</h3></div>
                 <div class="card"><i class="fas fa-network-wired"></i><h3>PREDICTIVE JUSTICE</h3></div>
+                <div class="card"><i class="fas fa-network-wired"></i><h3>DIGITAL ANALYSIS</h3></div> 
             </div>
         </section>
 
@@ -306,7 +323,7 @@
             <div class="grid">
                 <div class="card"><h3>Lady Legalz</h3><p>Beta 4 | NEO-INTELLIGENCE</p></div>
                 
-                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" class="card-link">
+                <a href="https://tuolatlabz.github.io/Lady-Legalz-ContractGen/" target="_blank" rel="noopener" class="card-link">
                     <div class="card card-contract">
                         <i class="fas fa-file-contract"></i>
                         <h3>ContractGen</h3>
@@ -317,27 +334,30 @@
 
                 <div class="card"><h3>Summary</h3><p>AI LEGALITY OS</p></div>
                 <div class="card"><h3>Forensics</h3><p>DIGITAL JUDICIAL ANALYZATION</p></div>
+                <div class="card"><h3>Forensics</h3><p>DIGITAL FORENSICS</p></div>
             </div>
         </section>
 
         <section id="studies">
             <h2>TUOLAT CASE STUDIES</h2>
-            <div class="card">
-    <div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" allowfullscreen></iframe></div>
-    <h3>Study: 01</h3>
-</div>
-<div class="card">
-    <div class="video"><iframe src="https://www.youtube.com/embed/k_onqn68GHY" allowfullscreen></iframe></div>
-    <h3>Study: 02</h3>
-</div>
-<div class="card">
-    <div class="video"><iframe src="https://www.youtube.com/embed/0tHb6U2604g" allowfullscreen></iframe></div>
-    <h3>Study: 03</h3>
-</div>
-<div class="card">
-    <div class="video"><iframe src="https://www.youtube.com/embed/zt0JA5rxdfM" allowfullscreen></iframe></div>
-    <h3>Study: 04</h3>
-</div>
+            <div class="grid">
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/GNZcMvI7NSM" title="Study 01" allowfullscreen></iframe></div>
+                    <h3>Study: 01</h3>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/k_onqn68GHY" title="Study 02" allowfullscreen></iframe></div>
+                    <h3>Study: 02</h3>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/0tHb6U2604g" title="Study 03" allowfullscreen></iframe></div>
+                    <h3>Study: 03</h3>
+                </div>
+                <div class="card">
+                    <div class="video"><iframe src="https://www.youtube.com/embed/zt0JA5rxdfM" title="Study 04" allowfullscreen></iframe></div>
+                    <h3>Study: 04</h3>
+                </div>
+            </div>
         </section>
 
         <section id="research">
@@ -346,6 +366,7 @@
                 <div class="card" onclick="openPreview(1)" style="cursor:pointer;"><h3>TUOLAT LL_BETA_v4.1.1</h3></div>
                 <div class="card" onclick="openPreview(2)" style="cursor:pointer;"><h3>NEGOTIATION SYNC</h3></div>
                 <div class="card" onclick="openPreview(3)" style="cursor:pointer;"><h3>RISK ANALYSIS</h3></div>
+                <div class="card" onclick="openPreview(3)" style="cursor:pointer;"><h3>JUDICIAL AI ANALYSIS</h3></div> 
             </div>
         </section>
     </main>
@@ -378,9 +399,11 @@
 
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 800); }, 2500);
+            setTimeout(() => { 
+                preloader.style.opacity = '0'; 
+                setTimeout(() => { preloader.style.display = 'none'; }, 800); 
+            }, 2500);
             
-            // Initialize Jitsi
             if (typeof JitsiMeetExternalAPI !== 'undefined') {
                 new JitsiMeetExternalAPI("meet.jit.si", {
                     roomName: "LadyLegalz-Digital-Mock-Court",
@@ -414,8 +437,14 @@
         const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+        function resize() { 
+            if(canvas.parentElement) {
+                canvas.width = canvas.parentElement.offsetWidth; 
+                canvas.height = canvas.parentElement.offsetHeight; 
+            }
+        }
         window.addEventListener('resize', resize); resize();
+        
         class Particle {
             constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5; }
             update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
@@ -445,7 +474,7 @@
         function openPreview(n) {
             playCyberSound();
             const titles = ["TUOLAT LL_BETA_v4.1.1", "NEGOTIATION SYNC", "RISK ANALYSIS"];
-            document.getElementById('preview-body').innerHTML = `<h3>${titles[n-1]}</h3><p>PROJECT DATA RESTRICTED. COMING 2026.</p>`;
+            document.getElementById('preview-body').innerHTML = `<h3>${titles[n-1]}</h3><p style="color:var(--text); margin-top:15px;">PROJECT DATA RESTRICTED. COMING 2026.</p>`;
             document.getElementById('preview-modal').classList.add('active');
         }
         function closePreview() { document.getElementById('preview-modal').classList.remove('active'); }
